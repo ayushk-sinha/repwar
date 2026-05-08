@@ -140,7 +140,6 @@
 import { ref, watch } from 'vue'
 import { supabase } from '@/utils/supabase'
 import { getIndiaDate } from '@/utils/intime'
-import { fetchLeaderboard } from '@/utils/fetchdata'
 
 const props = defineProps({ initialPushups: { type: Number, default: 0 } })
 const emit = defineEmits(['submit'])
