@@ -1,0 +1,214 @@
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: rgba(110, 231, 183, 0.6);
+}
+
+.svg-icon circle {
+  stroke: rgba(110, 231, 183, 0.6);
+}
+.ranklist {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* ── Header ───────────────────────────── */
+.ranklist-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 1.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.ranklist-eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6ee7b7;
+  font-weight: 500;
+  margin: 0 0 0.25rem;
+}
+
+.ranklist-title {
+  font-family: 'Lora', serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #f0ece3;
+  margin: 0;
+}
+
+.ranklist-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  background: rgba(110, 231, 183, 0.08);
+  border: 1px solid rgba(110, 231, 183, 0.2);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(110, 231, 183, 0.7);
+  font-weight: 500;
+}
+
+/* ── Empty / Loading ──────────────────── */
+.ranklist-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 3rem;
+  color: rgba(230, 225, 214, 0.25);
+}
+
+.spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(110, 231, 183, 0.15);
+  border-top-color: #6ee7b7;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.empty-text {
+  font-size: 0.8rem;
+}
+
+/* ── Scroll Box ───────────────────────── */
+.scroll-box {
+  height: 320px;
+  overflow-y: auto;
+  scroll-behavior: auto;
+}
+
+.scroll-box::-webkit-scrollbar {
+  width: 4px;
+}
+.scroll-box::-webkit-scrollbar-thumb {
+  background: rgba(110, 231, 183, 0.15);
+  border-radius: 9999px;
+}
+.scroll-box::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* ── Row ──────────────────────────────── */
+.rank-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  transition: background 0.18s;
+}
+
+.rank-row:hover {
+  background: rgba(110, 231, 183, 0.03);
+}
+
+.rank-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: rgba(230, 225, 214, 0.5);
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.rank-badge.rank-gold {
+  background: rgba(251, 191, 36, 0.12);
+  border-color: rgba(251, 191, 36, 0.3);
+  color: #fbbf24;
+}
+
+.rank-badge.rank-silver {
+  background: rgba(156, 163, 175, 0.12);
+  border-color: rgba(156, 163, 175, 0.3);
+  color: #9ca3af;
+}
+
+.rank-badge.rank-bronze {
+  background: rgba(180, 120, 60, 0.12);
+  border-color: rgba(180, 120, 60, 0.3);
+  color: #b47040;
+}
+
+.rank-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.rank-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.rank-name {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(230, 225, 214, 0.85);
+  margin: 0 0 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rank-reps {
+  font-size: 0.72rem;
+  color: rgba(110, 231, 183, 0.6);
+  margin: 0;
+  font-weight: 400;
+}
+
+.rank-reps span {
+  color: rgba(230, 225, 214, 0.3);
+  margin-left: 0.15rem;
+}
+
+.rank-social {
+  width: 30px;
+  height: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  flex-shrink: 0;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.rank-social:hover {
+  background: rgba(110, 231, 183, 0.08);
+  border-color: rgba(110, 231, 183, 0.2);
+}
+
+.insta-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+  filter: invert(1);
+}
+
+.rank-social:hover .insta-icon {
+  opacity: 0.8;
+}
