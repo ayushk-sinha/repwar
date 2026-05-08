@@ -57,17 +57,17 @@
 
       <!-- Nav Links -->
       <nav class="sidebar-nav">
-        <a
+        <RouterLink
           v-for="item in navItems"
           :key="item.label"
-          :href="item.href"
+          :to="item.href"
           class="nav-item"
           @click="toggleSidebar"
         >
           <span class="nav-icon" v-html="item.icon" />
           <span class="nav-label">{{ item.label }}</span>
           <span class="nav-arrow">→</span>
-        </a>
+        </RouterLink>
       </nav>
 
       <!-- Footer -->
@@ -80,6 +80,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import { RouterLink } from 'vue-router'
 
 const isOpen = ref(false)
 const toggleSidebar = () => {
@@ -303,6 +304,7 @@ const navItems = [
   gap: 0.2rem;
 }
 
+/* RouterLink renders as <a> — style it the same way */
 .nav-item {
   display: flex;
   align-items: center;
@@ -316,9 +318,19 @@ const navItems = [
   transition: all 0.2s;
 }
 
-.nav-item:hover {
+.nav-item:hover,
+.nav-item.router-link-active {
   background: rgba(110, 231, 183, 0.06);
   color: #e6e1d6;
+}
+
+/* Highlight the active page's icon and arrow */
+.nav-item.router-link-active .nav-icon {
+  color: #6ee7b7;
+}
+
+.nav-item.router-link-active .nav-arrow {
+  color: #6ee7b7;
 }
 
 .nav-icon {
