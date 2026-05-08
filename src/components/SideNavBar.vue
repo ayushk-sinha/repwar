@@ -60,7 +60,7 @@
         <RouterLink
           v-for="item in navItems"
           :key="item.label"
-          :to="item.href"
+          :to="item.href || '/'"
           class="nav-item"
           @click="toggleSidebar"
         >
