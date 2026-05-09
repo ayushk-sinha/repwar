@@ -6,6 +6,7 @@ const supabase = createClient(
   process.env.VITE_SUPABASE_URL,
   process.env.VITE_SUPABASE_PUBLISHABLE_KEY,
 )
+
 const SITE_URL = 'https://repwar.live'
 
 const staticRoutes = [
@@ -21,22 +22,23 @@ const staticRoutes = [
 
 export default async function handler(req, res) {
   try {
-    /* ------------------------------------------ */
-    /* Fetch Blogs */
-    /* ------------------------------------------ */
+    // Fetch blogs table
+    const { data: blogs, error: blogsError } = await supabase
+      .from('blogs')
+      .select('slug, updated_at')
 
-    const { data: blogs, error } = await supabase.from('blogs').select('slug, updated_at')
+    // Fetch sideblogs table
+    const { data: sideblogs, error: sideblogsError } = await supabase
+      .from('sideblogs')
+      .select('slug, updated_at')
 
-    if (error) {
-      console.error(error)
+    if (blogsError || sideblogsError) {
+      console.error(blogsError || sideblogsError)
 
       return res.status(500).send('Supabase Error')
     }
 
-    /* ------------------------------------------ */
-    /* Static Routes */
-    /* ------------------------------------------ */
-
+    // Static pages
     const staticLinks = staticRoutes.map((route) => ({
       url: route,
       changefreq: 'weekly',
@@ -44,11 +46,8 @@ export default async function handler(req, res) {
       lastmod: new Date(),
     }))
 
-    /* ------------------------------------------ */
-    /* Dynamic Blog Routes */
-    /* ------------------------------------------ */
-
-    const dynamicLinks = blogs
+    // Dynamic blog links
+    const blogLinks = blogs
       .filter((blog) => blog.slug)
       .map((blog) => ({
         url: `/blog/${blog.slug}`,
@@ -57,11 +56,17 @@ export default async function handler(req, res) {
         lastmod: blog.updated_at || new Date(),
       }))
 
-    const links = [...staticLinks, ...dynamicLinks]
+    // Dynamic sideblog links
+    const sideBlogLinks = sideblogs
+      .filter((blog) => blog.slug)
+      .map((blog) => ({
+        url: `/blog/${blog.slug}`,
+        changefreq: 'daily',
+        priority: 0.9,
+        lastmod: blog.updated_at || new Date(),
+      }))
 
-    /* ------------------------------------------ */
-    /* Create Sitemap */
-    /* ------------------------------------------ */
+    const links = [...staticLinks, ...blogLinks, ...sideBlogLinks]
 
     const stream = new SitemapStream({
       hostname: SITE_URL,
@@ -71,13 +76,8 @@ export default async function handler(req, res) {
       data.toString(),
     )
 
-    /* ------------------------------------------ */
-    /* Headers */
-    /* ------------------------------------------ */
-
     res.setHeader('Content-Type', 'application/xml')
 
-    /* SEO Cache */
     res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate')
 
     res.status(200).send(xml)
