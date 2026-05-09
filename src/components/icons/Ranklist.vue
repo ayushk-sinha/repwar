@@ -13,7 +13,7 @@
     <!-- Loading state -->
     <div v-if="!performers.length" class="ranklist-empty">
       <div class="spinner" />
-      <span class="empty-text">Loading rankings…</span>
+      <span class="empty-text">You Are the 1st one here…</span>
     </div>
 
     <!-- Scroll Box -->
@@ -121,4 +121,19 @@ onBeforeUnmount(() => {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');
 @import '@/assets/ranklist.css';
+.state-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 4rem 0;
+  color: rgba(230, 225, 214, 0.35);
+}
+
+.state-block.error {
+  color: #f87171;
+}
+.state-text {
+  font-size: 0.9rem;
+}
 </style>

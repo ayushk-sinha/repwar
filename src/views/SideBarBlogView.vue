@@ -9,11 +9,12 @@
 
 <script setup>
 import { ref } from 'vue'
+import { markRaw } from 'vue'
 import SideBarBlogRead from '@/components/SideBarBlogRead.vue'
 import SideNavBar from '@/components/SideNavBar.vue'
 // import PostBlog from '@/BlogComponents/PostBlog.vue'
 
-const activeComponent = ref(SideBarBlogRead)
+const activeComponent = ref(markRaw(SideBarBlogRead))
 </script>
 
 <style scoped>

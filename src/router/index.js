@@ -1,5 +1,5 @@
 import App from '@/App.vue'
-
+import { createMemoryHistory } from 'vue-router'
 import BlogView from '@/views/BlogView.vue'
 import ReadBlog from '@/BlogComponents/ReadBlog.vue'
 import { createRouter, createWebHistory } from 'vue-router'
@@ -14,7 +14,7 @@ import PostBlog from '@/BlogComponents/PostBlog.vue'
 import PostSideView from '@/views/PostSideView.vue'
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL),
+  history: import.meta.env.SSR ? createMemoryHistory() : createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
