@@ -139,7 +139,7 @@
 
 <script setup>
 import { ref, onMounted, onActivated, onDeactivated } from 'vue'
-import { useDeviceId } from '@/composables/useDeviceId'
+// import { useDeviceId } from '@/composables/useDeviceId'
 import { nextTick } from 'vue'
 
 import PushupCounter from '@/components/PushupCounter.vue'
@@ -152,7 +152,7 @@ import { fetchLeaderboard } from '@/utils/fetchdata'
 
 const count = ref(0)
 const title = 'repWar.live'
-const { initDeviceId } = useDeviceId()
+// const { initDeviceId } = useDeviceId()
 
 const showStory = ref(false)
 const showCounter = ref(false)
@@ -172,7 +172,7 @@ defineOptions({
   name: 'HomeView',
 })
 onMounted(() => {
-  initDeviceId()
+  //initDeviceId()
   //   homeStore.fetchHomeData()
 
   //   console.log('🔥 mounted (only once)')

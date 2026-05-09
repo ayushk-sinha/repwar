@@ -49,12 +49,7 @@
           Instagram Link
           <span class="field-optional">(optional)</span>
         </label>
-        <input
-          v-model="form.instagram"
-          type="text"
-          value="https://instagram.com/"
-          class="field-input"
-        />
+        <input v-model="form.instagram" type="text" class="field-input" />
       </div>
 
       <!-- Avatar Selection -->
