@@ -156,14 +156,13 @@ watch(
 )
 
 const avatars = [
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8KOYbgIqTD0mnqCJ0_JtRB2pAWGAo7zU57Q&s',
-  'https://png.pngtree.com/png-clipart/20240826/original/pngtree-3d-powerful-body-builder-gym-man-on-transparent-background-png-image_15851228.png',
-  'https://thumbs.dreamstime.com/b/closeup-portrait-muscular-man-workout-barbell-gym-brutal-bodybuilder-athletic-six-pack-perfect-abs-shoulders-55122231.jpg',
-  'https://www.shutterstock.com/image-photo/strong-bald-bodybuilder-six-pack-600w-553440583.jpg',
-  'https://img.magnific.com/premium-photo/handsome-strong-bodybuilder-athletic-men-pumping-up-muscles-with-dumbbells_174475-311.jpg',
-  'https://img.magnific.com/free-photo/athletic-woman-exercising-gym-keep-fit_23-2150989857.jpg?semt=ais_hybrid&w=740&q=80',
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrkkv1SO1PsfTX7vBuAkCd8ehwLeeGzuupzA&s',
-  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2MjzlOOmcgq7LyXOVWSTzHavr-WquGp7Zhg&s',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSd99t28UGod9QBA0TYfCgzzmJuUIAWtG5hSg&s',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTXbFWgG8L51sGYzdNPEjkhPCKDUnDyp5jUsA&s',
+  'https://media.thepopverse.com/media/luffy-gear-5-eyes-and-smiling-g3aldq0s12hfhnfhqgldqcg4py.jpg',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfY0IfeM7GCj9TCzTRcb2hnecIPwQi737IEA&s',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIeVMpRUlXl-MaC2iRItr3WOrQXjhVHbiYbQ&s',
+  'https://static.beebom.com/wp-content/uploads/2023/03/birthday.jpg?w=640',
+  'https://images6.alphacoders.com/139/thumb-1920-1398023.png',
 ]
 
 function selectAvatar(img) {
