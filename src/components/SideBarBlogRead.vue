@@ -49,7 +49,7 @@
             <article class="blog-card" :style="{ '--delay': `${i * 60}ms` }">
               <div class="card-inner">
                 <div class="card-meta">
-                  <span class="card-date">{{ formatDate(blog.updated_at) }}</span>
+                  <span class="card-date">{{ formatDate(blog.created_at) }}</span>
                   <span class="meta-sep">·</span>
                   <span class="card-read-time">{{ readTime(blog.content) }} min read</span>
                 </div>
@@ -95,7 +95,7 @@
               </svg>
               Back
             </button>
-            <span class="article-topbar-date">{{ formatDate(post.updated_at) }}</span>
+            <span class="article-topbar-date">{{ formatDate(post.created_at) }}</span>
           </div>
         </div>
 
@@ -111,7 +111,7 @@
               <span class="author-avatar large">{{ initials(post.author) }}</span>
               <div>
                 <p class="byline-name">{{ post.author || 'Anonymous' }}</p>
-                <p class="byline-date">{{ formatDateLong(post.updated_at) }}</p>
+                <p class="byline-date">{{ formatDateLong(post.created_at) }}</p>
               </div>
             </div>
             <!-- <div class="article-divider">
