@@ -1,5 +1,14 @@
 {
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
+    {
+      "source": "/sitemap.xml",
+      "destination": "/api/sitemap"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/((?!api/).*)",
+      "dest": "/index.html"
+    }
   ]
 }
