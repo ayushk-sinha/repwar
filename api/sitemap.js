@@ -1,7 +1,11 @@
 import { SitemapStream, streamToPromise } from 'sitemap'
 import { Readable } from 'stream'
-import { supabase } from '@/utils/supabase'
+import { createClient } from '@supabase/supabase-js'
 
+const supabase = createClient(
+  process.env.VITE_SUPABASE_URL,
+  process.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+)
 const SITE_URL = 'https://repwar.live'
 
 const staticRoutes = [
