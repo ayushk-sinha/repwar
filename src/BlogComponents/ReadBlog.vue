@@ -151,9 +151,9 @@ async function fetchBlogs() {
   error.value = null
   try {
     const { data, error: err } = await supabase
-      .from('blogs')
+      .from('sideblogs')
       .select('*')
-      .order('created_at', { ascending: false })
+      .order('updated_at', { ascending: false })
     if (err) throw err
     blogs.value = data || []
   } catch (e) {
