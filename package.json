@@ -20,9 +20,12 @@
     "@tensorflow/tfjs-backend-wasm": "^4.22.0",
     "@tensorflow/tfjs-backend-webgl": "^4.22.0",
     "@tensorflow/tfjs-core": "^4.22.0",
+    "@unhead/vue": "^3.1.0",
+    "axios": "^1.16.0",
     "html-to-image": "^1.11.13",
     "pinia": "^3.0.4",
     "primeicons": "^7.0.0",
+    "sitemap": "^9.0.1",
     "tailwindcss": "^4.2.4",
     "vue": "^3.5.32",
     "vue-router": "^5.0.4"
@@ -45,6 +48,7 @@
     "oxlint": "~1.60.0",
     "prettier": "3.8.3",
     "vite": "^8.0.8",
+    "vite-plugin-sitemap": "^0.8.2",
     "vite-plugin-vue-devtools": "^8.1.1",
     "vitest": "^4.1.4"
   },

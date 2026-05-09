@@ -1,0 +1,18 @@
+# robots.txt — repwar.live
+# https://developers.google.com/search/docs/crawling-indexing/robots/intro
+ 
+# Allow all crawlers to access everything by default
+User-agent: *
+Allow: /
+ 
+# Block user-specific and private pages (not useful in search results)
+Disallow: /profile/
+Disallow: /settings/
+Disallow: /dashboard/
+Disallow: /api/
+ 
+# Block any query-string URLs that are duplicates of clean URLs
+Disallow: /*?*
+ 
+# Point crawlers to the sitemap
+Sitemap: https://www.repwar.live/sitemap.xml
