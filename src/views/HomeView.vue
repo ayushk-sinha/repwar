@@ -1,4 +1,4 @@
-<!-- App.vue -->
+<!-- HomeView.vue -->
 <template>
   <div class="app-shell" @click="update()">
     <SideNavBar />
@@ -149,6 +149,7 @@ import Ranklist from '@/components/icons/Ranklist.vue'
 import BmiCalulator from '@/components/BmiCalulator.vue'
 import StoryCard from '@/components/StoryCard.vue'
 import { fetchLeaderboard } from '@/utils/fetchdata'
+import { useHead } from '@vueuse/head'
 
 const count = ref(0)
 const title = 'repWar.live'
@@ -185,6 +186,227 @@ onMounted(() => {
 })
 // onActivated(() => console.log('activated'))
 // onDeactivated(() => console.log('deactivated'))
+
+// useingvue head
+
+useHead({
+  title: 'RepWar.live - AI Pushup Counter & Workout Tracker',
+
+  meta: [
+    /* ------------------------------------------------ */
+    /* Basic SEO */
+    /* ------------------------------------------------ */
+
+    {
+      name: 'description',
+      content:
+        'RepWar.live is an AI-powered pushup tracker and workout leaderboard platform where users can count reps, track fitness progress, compete globally, and generate workout stories.',
+    },
+
+    {
+      name: 'keywords',
+      content:
+        'pushup counter, AI workout tracker, fitness leaderboard, pushup tracker, workout app, bodyweight training, rep counter, fitness AI, online pushup competition, BMI calculator',
+    },
+
+    {
+      name: 'robots',
+      content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    },
+
+    {
+      name: 'author',
+      content: 'RepWar.live',
+    },
+
+    {
+      name: 'theme-color',
+      content: '#0d1117',
+    },
+
+    {
+      name: 'application-name',
+      content: 'RepWar.live',
+    },
+
+    /* ------------------------------------------------ */
+    /* Open Graph */
+    /* ------------------------------------------------ */
+
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+
+    {
+      property: 'og:site_name',
+      content: 'RepWar.live',
+    },
+
+    {
+      property: 'og:title',
+      content: 'RepWar.live - AI Pushup Counter & Workout Tracker',
+    },
+
+    {
+      property: 'og:description',
+      content:
+        'Track pushups using AI, compete on global leaderboards, monitor workouts, calculate BMI, and level up your fitness journey.',
+    },
+
+    {
+      property: 'og:url',
+      content: 'https://repwar.live',
+    },
+
+    {
+      property: 'og:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+
+    {
+      property: 'og:image:width',
+      content: '1200',
+    },
+
+    {
+      property: 'og:image:height',
+      content: '630',
+    },
+
+    {
+      property: 'og:image:type',
+      content: 'image/png',
+    },
+
+    {
+      property: 'og:image:alt',
+      content: 'RepWar AI Pushup Counter App',
+    },
+
+    {
+      property: 'og:locale',
+      content: 'en_US',
+    },
+
+    /* ------------------------------------------------ */
+    /* Twitter / X */
+    /* ------------------------------------------------ */
+
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+
+    {
+      name: 'twitter:title',
+      content: 'RepWar.live - AI Pushup Counter',
+    },
+
+    {
+      name: 'twitter:description',
+      content:
+        'Compete globally, count pushups with AI, track workouts, and dominate the leaderboard.',
+    },
+
+    {
+      name: 'twitter:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+
+    /* ------------------------------------------------ */
+    /* Mobile / PWA */
+    /* ------------------------------------------------ */
+
+    {
+      name: 'apple-mobile-web-app-capable',
+      content: 'yes',
+    },
+
+    {
+      name: 'apple-mobile-web-app-status-bar-style',
+      content: 'black-translucent',
+    },
+
+    {
+      name: 'apple-mobile-web-app-title',
+      content: 'RepWar',
+    },
+
+    {
+      name: 'mobile-web-app-capable',
+      content: 'yes',
+    },
+  ],
+
+  /* ------------------------------------------------ */
+  /* Canonical */
+  /* ------------------------------------------------ */
+
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://repwar.live',
+    },
+  ],
+
+  /* ------------------------------------------------ */
+  /* JSON-LD Structured Data */
+  /* ------------------------------------------------ */
+
+  script: [
+    {
+      type: 'application/ld+json',
+
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+
+        '@type': 'SoftwareApplication',
+
+        name: 'RepWar.live',
+
+        applicationCategory: 'HealthApplication',
+
+        operatingSystem: 'Web',
+
+        url: 'https://repwar.live',
+
+        description:
+          'AI-powered pushup tracking platform with workout analytics, leaderboards, BMI calculator, and competitive fitness features.',
+
+        image: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+
+        screenshot: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+
+        creator: {
+          '@type': 'Organization',
+          name: 'RepWar.live',
+        },
+
+        publisher: {
+          '@type': 'Organization',
+          name: 'RepWar.live',
+        },
+
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+        },
+
+        featureList: [
+          'AI Pushup Counter',
+          'Workout Tracking',
+          'Global Leaderboards',
+          'BMI Calculator',
+          'Fitness Stories',
+          'Pose Detection',
+          'Realtime Rep Counting',
+        ],
+      }),
+    },
+  ],
+})
 
 function handleAction(index) {
   if (index === 1) showCounter.value = true

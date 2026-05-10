@@ -14,20 +14,30 @@
 // // app.use(createPinia())
 // app.use(router)
 // app.mount('#app')
-
 import { ViteSSG } from 'vite-ssg'
+import { createHead } from '@vueuse/head'
 
 import App from './App.vue'
 import router from './router'
 
 import { getDynamicRoutes } from './prerender'
 
-export const createApp = ViteSSG(App, {
-  routes: router.options.routes,
+const head = createHead()
 
-  async includedRoutes(paths, routes) {
-    const dynamicRoutes = await getDynamicRoutes()
+export const createApp = ViteSSG(
+  App,
 
-    return [...paths, ...dynamicRoutes]
+  {
+    routes: router.options.routes,
+
+    async includedRoutes(paths) {
+      const dynamicRoutes = await getDynamicRoutes()
+
+      return [...paths, ...dynamicRoutes]
+    },
   },
-})
+
+  ({ app }) => {
+    app.use(head)
+  },
+)

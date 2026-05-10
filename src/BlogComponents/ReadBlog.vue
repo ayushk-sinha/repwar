@@ -43,7 +43,7 @@
           <router-link
             v-for="(blog, i) in blogs"
             :key="blog.id"
-            :to="`/blog/${blog.slug}`"
+            :to="`/blogs-page/${blog.slug}`"
             class="block"
           >
             <article class="blog-card" :style="{ '--delay': `${i * 60}ms` }">
@@ -135,26 +135,55 @@
 </template>
 
 <script setup>
-import { useRoute } from 'vue-router'
-import { computed, ref, onMounted } from 'vue'
-import { supabase } from '@/utils/supabase'
-import router from '@/router'
+import { useRoute, useRouter } from 'vue-router'
 
+import { ref, computed, onMounted } from 'vue'
+
+import { useHead } from '@vueuse/head'
+
+import DOMPurify from 'dompurify'
+
+import { supabase } from '@/utils/supabase'
+
+/* ------------------------------------------------ */
+/* Router */
+/* ------------------------------------------------ */
+
+const router = useRouter()
 const route = useRoute()
+
+/* ------------------------------------------------ */
+/* State */
+/* ------------------------------------------------ */
+
 const blogs = ref([])
-const post = computed(() => blogs.value.find((b) => b.slug === route.params.slug))
+
 const loading = ref(false)
+
 const error = ref(null)
+
+/* ------------------------------------------------ */
+/* Current Post */
+/* ------------------------------------------------ */
+
+const post = computed(() => blogs.value.find((b) => b.slug === route.params.slug))
+
+/* ------------------------------------------------ */
+/* Fetch Blogs */
+/* ------------------------------------------------ */
 
 async function fetchBlogs() {
   loading.value = true
+
   error.value = null
+
   try {
-    const { data, error: err } = await supabase
-      .from('sideblogs')
-      .select('*')
-      .order('updated_at', { ascending: false })
+    const { data, error: err } = await supabase.from('sideblogs').select('*').order('updated_at', {
+      ascending: false,
+    })
+
     if (err) throw err
+
     blogs.value = data || []
   } catch (e) {
     error.value = e.message || 'Failed to load blogs'
@@ -163,8 +192,19 @@ async function fetchBlogs() {
   }
 }
 
+/* ------------------------------------------------ */
+/* Lifecycle */
+/* ------------------------------------------------ */
+
+onMounted(fetchBlogs)
+
+/* ------------------------------------------------ */
+/* Utilities */
+/* ------------------------------------------------ */
+
 function formatDate(iso) {
   if (!iso) return ''
+
   return new Date(iso).toLocaleDateString('en-US', {
     month: 'short',
     day: 'numeric',
@@ -174,6 +214,7 @@ function formatDate(iso) {
 
 function formatDateLong(iso) {
   if (!iso) return ''
+
   return new Date(iso).toLocaleDateString('en-US', {
     weekday: 'long',
     month: 'long',
@@ -187,11 +228,13 @@ function readTime(content = '') {
     .replace(/<[^>]+>/g, '')
     .split(/\s+/)
     .filter(Boolean).length
+
   return Math.max(1, Math.ceil(words / 200))
 }
 
 function excerpt(content = '', len = 140) {
   const plain = content.replace(/<[^>]+>/g, '').trim()
+
   return plain.length > len ? plain.slice(0, len).trimEnd() + '…' : plain
 }
 
@@ -206,6 +249,10 @@ function initials(name = '') {
   )
 }
 
+/* ------------------------------------------------ */
+/* Safe HTML Rendering */
+/* ------------------------------------------------ */
+
 function renderContent(content = '') {
   if (!content.includes('<')) {
     return content
@@ -213,10 +260,222 @@ function renderContent(content = '') {
       .map((p) => `<p>${p.replace(/\n/g, '<br>')}</p>`)
       .join('')
   }
-  return content
+
+  return DOMPurify.sanitize(content)
 }
 
-onMounted(fetchBlogs)
+/* ------------------------------------------------ */
+/* SEO Reactive Values */
+/* ------------------------------------------------ */
+
+const seoTitle = computed(() =>
+  post.value ? `${post.value.title} | RepWar.live` : 'Fitness Stories | RepWar.live',
+)
+
+const seoDescription = computed(() =>
+  post.value
+    ? excerpt(post.value.content, 160)
+    : 'Read workout stories, fitness insights, AI pushup training guides, and motivational articles on RepWar.live.',
+)
+
+const seoUrl = computed(() =>
+  post.value
+    ? `https://repwar.live/blogs-page/${post.value.slug}`
+    : 'https://repwar.live/blogs-page',
+)
+
+/* ------------------------------------------------ */
+/* SEO */
+/* ------------------------------------------------ */
+
+useHead({
+  title: seoTitle,
+
+  meta: [
+    /* ------------------------------------------ */
+    /* Basic SEO */
+    /* ------------------------------------------ */
+
+    {
+      name: 'description',
+
+      content: seoDescription,
+    },
+
+    {
+      name: 'robots',
+
+      content: 'index, follow',
+    },
+
+    {
+      name: 'keywords',
+
+      content:
+        'fitness stories, AI pushup tracker, workout guides, bodyweight training, fitness motivation, repwar blog',
+    },
+
+    /* ------------------------------------------ */
+    /* OpenGraph */
+    /* ------------------------------------------ */
+
+    {
+      property: 'og:type',
+
+      content: computed(() => (post.value ? 'article' : 'website')),
+    },
+
+    {
+      property: 'og:site_name',
+
+      content: 'RepWar.live',
+    },
+
+    {
+      property: 'og:title',
+
+      content: seoTitle,
+    },
+
+    {
+      property: 'og:description',
+
+      content: seoDescription,
+    },
+
+    {
+      property: 'og:url',
+
+      content: seoUrl,
+    },
+
+    {
+      property: 'og:image',
+
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+
+    {
+      property: 'og:image:width',
+
+      content: '1200',
+    },
+
+    {
+      property: 'og:image:height',
+
+      content: '630',
+    },
+
+    {
+      property: 'og:image:alt',
+
+      content: 'RepWar.live Fitness Stories',
+    },
+
+    {
+      property: 'og:locale',
+
+      content: 'en_US',
+    },
+
+    /* ------------------------------------------ */
+    /* Twitter */
+    /* ------------------------------------------ */
+
+    {
+      name: 'twitter:card',
+
+      content: 'summary_large_image',
+    },
+
+    {
+      name: 'twitter:title',
+
+      content: seoTitle,
+    },
+
+    {
+      name: 'twitter:description',
+
+      content: seoDescription,
+    },
+
+    {
+      name: 'twitter:image',
+
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+  ],
+
+  /* -------------------------------------------- */
+  /* Canonical */
+  /* -------------------------------------------- */
+
+  link: [
+    {
+      rel: 'canonical',
+
+      href: seoUrl,
+    },
+  ],
+
+  /* -------------------------------------------- */
+  /* Structured Data */
+  /* -------------------------------------------- */
+
+  script: computed(() => {
+    if (!post.value) return []
+
+    return [
+      {
+        type: 'application/ld+json',
+
+        children: JSON.stringify({
+          '@context': 'https://schema.org',
+
+          '@type': 'BlogPosting',
+
+          headline: post.value.title,
+
+          description: seoDescription.value,
+
+          articleBody: post.value.content?.replace(/<[^>]+>/g, '')?.slice(0, 5000),
+
+          author: {
+            '@type': 'Person',
+
+            name: post.value.author || 'Anonymous',
+          },
+
+          publisher: {
+            '@type': 'Organization',
+
+            name: 'RepWar.live',
+
+            logo: {
+              '@type': 'ImageObject',
+
+              url: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+            },
+          },
+
+          datePublished: post.value.created_at,
+
+          dateModified: post.value.updated_at || post.value.created_at,
+
+          mainEntityOfPage: {
+            '@type': 'WebPage',
+
+            '@id': seoUrl.value,
+          },
+
+          image: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+        }),
+      },
+    ]
+  }),
+})
 </script>
 
 <style>

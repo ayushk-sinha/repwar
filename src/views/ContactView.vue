@@ -89,6 +89,7 @@
 
 <script setup>
 //import '@/assets/contactview.css'
+import { useHead } from '@vueuse/head'
 import SideNavBar from '@/components/SideNavBar.vue'
 import { reactive, ref } from 'vue'
 import { supabase } from '@/utils/supabase'
@@ -136,6 +137,148 @@ const handleSubmit = async () => {
     loading.value = false
   }
 }
+
+useHead({
+  title: 'Contact Us | RepWar.live',
+
+  meta: [
+    /* ------------------------------------------------ */
+    /* Basic SEO */
+    /* ------------------------------------------------ */
+
+    {
+      name: 'description',
+      content:
+        'Contact the RepWar.live team for support, feedback, partnership inquiries, bug reports, or fitness app assistance.',
+    },
+
+    {
+      name: 'robots',
+      content: 'index, follow',
+    },
+
+    {
+      name: 'keywords',
+      content:
+        'RepWar contact, fitness app support, AI pushup counter support, workout tracker contact, RepWar help',
+    },
+
+    /* ------------------------------------------------ */
+    /* Open Graph */
+    /* ------------------------------------------------ */
+
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+
+    {
+      property: 'og:site_name',
+      content: 'RepWar.live',
+    },
+
+    {
+      property: 'og:title',
+      content: 'Contact Us | RepWar.live',
+    },
+
+    {
+      property: 'og:description',
+      content:
+        'Reach out to RepWar.live for support, feature requests, bug reports, or general questions.',
+    },
+
+    {
+      property: 'og:url',
+      content: 'https://repwar.live/Contact-Us',
+    },
+
+    {
+      property: 'og:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+
+    {
+      property: 'og:image:width',
+      content: '1200',
+    },
+
+    {
+      property: 'og:image:height',
+      content: '630',
+    },
+
+    {
+      property: 'og:image:alt',
+      content: 'RepWar.live Contact Support',
+    },
+
+    /* ------------------------------------------------ */
+    /* Twitter / X */
+    /* ------------------------------------------------ */
+
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+
+    {
+      name: 'twitter:title',
+      content: 'Contact Us | RepWar.live',
+    },
+
+    {
+      name: 'twitter:description',
+      content: 'Need help or want to reach the RepWar.live team? Contact us here.',
+    },
+
+    {
+      name: 'twitter:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+  ],
+
+  /* ------------------------------------------------ */
+  /* Canonical */
+  /* ------------------------------------------------ */
+
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://repwar.live/Contact-Us',
+    },
+  ],
+
+  /* ------------------------------------------------ */
+  /* Structured Data */
+  /* ------------------------------------------------ */
+
+  script: [
+    {
+      type: 'application/ld+json',
+
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+
+        '@type': 'ContactPage',
+
+        name: 'Contact RepWar.live',
+
+        description: 'Official contact and support page for RepWar.live.',
+
+        url: 'https://repwar.live/Contact-Us',
+
+        publisher: {
+          '@type': 'Organization',
+
+          name: 'RepWar.live',
+
+          url: 'https://repwar.live',
+        },
+      }),
+    },
+  ],
+})
 </script>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap');

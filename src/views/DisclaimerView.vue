@@ -114,6 +114,99 @@
 
 <script setup>
 import SideNavBar from '@/components/SideNavBar.vue'
+import { useHead } from '@vueuse/head'
+useHead({
+  title: 'Health Disclaimer | RepWar.live',
+
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Read the official health and fitness disclaimer for RepWar.live including BMI calculator limitations, pushup counter safety, and exercise responsibility guidelines.',
+    },
+
+    {
+      name: 'robots',
+      content: 'index, follow',
+    },
+
+    /* Open Graph */
+
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+
+    {
+      property: 'og:title',
+      content: 'Health Disclaimer | RepWar.live',
+    },
+
+    {
+      property: 'og:description',
+      content:
+        'Important health, exercise, and medical disclaimer information for RepWar.live fitness tools.',
+    },
+
+    {
+      property: 'og:url',
+      content: 'https://repwar.live/health-disclaimer',
+    },
+
+    {
+      property: 'og:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+
+    /* Twitter */
+
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+
+    {
+      name: 'twitter:title',
+      content: 'Health Disclaimer | RepWar.live',
+    },
+
+    {
+      name: 'twitter:description',
+      content: 'Read RepWar.live health and fitness disclaimer information.',
+    },
+  ],
+
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://repwar.live/health-disclaimer',
+    },
+  ],
+
+  script: [
+    {
+      type: 'application/ld+json',
+
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+
+        '@type': 'WebPage',
+
+        name: 'Health Disclaimer',
+
+        description: 'Official health and medical disclaimer page for RepWar.live.',
+
+        url: 'https://repwar.live/health-disclaimer',
+
+        publisher: {
+          '@type': 'Organization',
+
+          name: 'RepWar.live',
+        },
+      }),
+    },
+  ],
+})
 </script>
 
 <style scoped>
