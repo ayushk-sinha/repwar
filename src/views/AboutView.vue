@@ -138,6 +138,187 @@
 
 <script setup>
 import SideNavBar from '@/components/SideNavBar.vue'
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'About RepWar.live | AI Fitness Competition Platform',
+
+  meta: [
+    /* ------------------------------------------------ */
+    /* Basic SEO */
+    /* ------------------------------------------------ */
+
+    {
+      name: 'description',
+      content:
+        'Learn about RepWar.live — an AI-powered pushup tracking and competitive fitness platform built to gamify workouts, improve consistency, and motivate users through real-time rankings.',
+    },
+
+    {
+      name: 'keywords',
+      content:
+        'RepWar, AI fitness app, pushup counter, competitive fitness platform, workout leaderboard, fitness tracker, pose detection, BMI calculator, fitness motivation',
+    },
+
+    {
+      name: 'robots',
+      content: 'index, follow',
+    },
+
+    {
+      name: 'author',
+      content: 'Ayush Sinha',
+    },
+
+    /* ------------------------------------------------ */
+    /* Open Graph */
+    /* ------------------------------------------------ */
+
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+
+    {
+      property: 'og:site_name',
+      content: 'RepWar.live',
+    },
+
+    {
+      property: 'og:title',
+      content: 'About RepWar.live | AI Fitness Competition Platform',
+    },
+
+    {
+      property: 'og:description',
+      content:
+        'Discover the mission, vision, and technology behind RepWar.live — an AI-powered workout competition platform.',
+    },
+
+    {
+      property: 'og:url',
+      content: 'https://repwar.live/About-Us',
+    },
+
+    {
+      property: 'og:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+
+    {
+      property: 'og:image:width',
+      content: '1200',
+    },
+
+    {
+      property: 'og:image:height',
+      content: '630',
+    },
+
+    {
+      property: 'og:image:alt',
+      content: 'RepWar.live AI Fitness Platform',
+    },
+
+    {
+      property: 'og:locale',
+      content: 'en_US',
+    },
+
+    /* ------------------------------------------------ */
+    /* Twitter / X */
+    /* ------------------------------------------------ */
+
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+
+    {
+      name: 'twitter:title',
+      content: 'About RepWar.live',
+    },
+
+    {
+      name: 'twitter:description',
+      content: 'Explore the story and vision behind RepWar.live — AI-powered fitness competition.',
+    },
+
+    {
+      name: 'twitter:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+  ],
+
+  /* ------------------------------------------------ */
+  /* Canonical */
+  /* ------------------------------------------------ */
+
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://repwar.live/About-Us',
+    },
+  ],
+
+  /* ------------------------------------------------ */
+  /* Structured Data */
+  /* ------------------------------------------------ */
+
+  script: [
+    {
+      type: 'application/ld+json',
+
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+
+        '@type': 'AboutPage',
+
+        name: 'About RepWar.live',
+
+        description:
+          'Official about page for RepWar.live, an AI-powered pushup tracking and competitive fitness platform.',
+
+        url: 'https://repwar.live/About-Us',
+
+        mainEntity: {
+          '@type': 'SoftwareApplication',
+
+          name: 'RepWar.live',
+
+          applicationCategory: 'HealthApplication',
+
+          operatingSystem: 'Web',
+
+          url: 'https://repwar.live',
+
+          creator: {
+            '@type': 'Person',
+
+            name: 'Ayush Sinha',
+          },
+
+          featureList: [
+            'AI Pushup Counter',
+            'Workout Leaderboards',
+            'BMI Calculator',
+            'Realtime Pose Detection',
+            'Fitness Competition',
+            'Workout Tracking',
+          ],
+        },
+
+        publisher: {
+          '@type': 'Organization',
+
+          name: 'RepWar.live',
+
+          url: 'https://repwar.live',
+        },
+      }),
+    },
+  ],
+})
 </script>
 
 <style scoped>

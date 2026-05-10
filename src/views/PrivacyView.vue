@@ -136,6 +136,169 @@
 
 <script setup>
 import SideNavBar from '@/components/SideNavBar.vue'
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Privacy Policy | RepWar.live',
+
+  meta: [
+    /* ------------------------------------------------ */
+    /* Basic SEO */
+    /* ------------------------------------------------ */
+
+    {
+      name: 'description',
+      content:
+        'Read the official RepWar.live Privacy Policy explaining how user data, leaderboard submissions, cookies, device IDs, and fitness information are collected and protected.',
+    },
+
+    {
+      name: 'keywords',
+      content:
+        'RepWar privacy policy, fitness app privacy, AI workout tracker privacy, leaderboard privacy, cookies policy, user data protection',
+    },
+
+    {
+      name: 'robots',
+      content: 'index, follow',
+    },
+
+    {
+      name: 'author',
+      content: 'RepWar.live',
+    },
+
+    /* ------------------------------------------------ */
+    /* Open Graph */
+    /* ------------------------------------------------ */
+
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+
+    {
+      property: 'og:site_name',
+      content: 'RepWar.live',
+    },
+
+    {
+      property: 'og:title',
+      content: 'Privacy Policy | RepWar.live',
+    },
+
+    {
+      property: 'og:description',
+      content:
+        'Learn how RepWar.live collects, stores, and protects your data while using our AI fitness tracking platform.',
+    },
+
+    {
+      property: 'og:url',
+      content: 'https://repwar.live/Privacy-Policy',
+    },
+
+    {
+      property: 'og:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+
+    {
+      property: 'og:image:width',
+      content: '1200',
+    },
+
+    {
+      property: 'og:image:height',
+      content: '630',
+    },
+
+    {
+      property: 'og:image:alt',
+      content: 'RepWar.live Privacy Policy',
+    },
+
+    {
+      property: 'og:locale',
+      content: 'en_US',
+    },
+
+    /* ------------------------------------------------ */
+    /* Twitter / X */
+    /* ------------------------------------------------ */
+
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+
+    {
+      name: 'twitter:title',
+      content: 'Privacy Policy | RepWar.live',
+    },
+
+    {
+      name: 'twitter:description',
+      content:
+        'Read how RepWar.live handles and protects your personal data and fitness activity information.',
+    },
+
+    {
+      name: 'twitter:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+  ],
+
+  /* ------------------------------------------------ */
+  /* Canonical */
+  /* ------------------------------------------------ */
+
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://repwar.live/Privacy-Policy',
+    },
+  ],
+
+  /* ------------------------------------------------ */
+  /* Structured Data */
+  /* ------------------------------------------------ */
+
+  script: [
+    {
+      type: 'application/ld+json',
+
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+
+        '@type': 'PrivacyPolicy',
+
+        name: 'RepWar.live Privacy Policy',
+
+        description:
+          'Official privacy policy for RepWar.live explaining data collection, cookies, leaderboard submissions, and user protection.',
+
+        url: 'https://repwar.live/Privacy-Policy',
+
+        publisher: {
+          '@type': 'Organization',
+
+          name: 'RepWar.live',
+
+          url: 'https://repwar.live',
+        },
+
+        about: {
+          '@type': 'SoftwareApplication',
+
+          name: 'RepWar.live',
+
+          applicationCategory: 'HealthApplication',
+        },
+      }),
+    },
+  ],
+})
 </script>
 
 <style scoped>

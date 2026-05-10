@@ -198,23 +198,70 @@ import { ref, computed, nextTick } from 'vue'
 import { supabase } from '@/utils/supabase' // adjust path to your supabase client
 import { onMounted, onUnmounted } from 'vue'
 import { generateSlug } from '@/utils/slug'
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Write a Fitness Story | RepWar.live',
+
+  meta: [
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1',
+    },
+    {
+      name: 'description',
+      content:
+        'Create and publish fitness stories, workout experiences, training guides, and motivational articles on RepWar.live.',
+    },
+
+    {
+      name: 'robots',
+      content: 'noindex, nofollow',
+    },
+
+    {
+      property: 'og:title',
+      content: 'Write a Fitness Story | RepWar.live',
+    },
+
+    {
+      property: 'og:description',
+      content: 'Publish workout stories and motivational fitness content on RepWar.live.',
+    },
+
+    {
+      property: 'og:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+  ],
+
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://repwar.live/Post-blog-side',
+    },
+  ],
+})
 
 onMounted(() => {
-  // 1. Find existing viewport tag
-  let viewport = document.querySelector('meta[name="viewport"]')
+  const viewport = document.querySelector('meta[name="viewport"]')
 
-  // 2. Change it to desktop width
-  if (viewport) {
-    viewport.setAttribute('content', 'width=1200, initial-scale=0.5') // Or 'width=1024'
-  }
+  if (!viewport) return
+
+  viewport.setAttribute('content', 'width=device-width, initial-scale=1')
 })
 
 onUnmounted(() => {
-  // 3. Reset to responsive on exit
-  let viewport = document.querySelector('meta[name="viewport"]')
-  if (viewport) {
-    viewport.setAttribute('content', 'width=device-width, initial-scale=1.0')
-  }
+  const viewport = document.querySelector('meta[name="viewport"]')
+
+  if (!viewport) return
+
+  viewport.setAttribute('content', 'width=device-width, initial-scale=1')
 })
 
 // ── Form state ─────────────────────────────────────────────────

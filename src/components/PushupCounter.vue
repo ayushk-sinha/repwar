@@ -170,6 +170,7 @@ import { ref, computed, watch } from 'vue'
 import { useCamera } from '@/composables/useCamera'
 import { usePoseDetection } from '@/composables/usePoseDetection'
 import { VIOLATION_MSG, VIOLATION_SEVERITY } from '@/utils/pushupLogic'
+import { useHead } from '@vueuse/head'
 
 const emit = defineEmits(['count-updated', 'session-ended'])
 const props = defineProps({
@@ -268,6 +269,237 @@ function resetAll() {
   showVerdict.value = false
   emit('count-updated', 0)
 }
+/* ------------------------------------------------ */
+/* SEO */
+/* ------------------------------------------------ */
+
+useHead({
+  title: 'AI Pushup Counter | RepWar.live',
+
+  meta: [
+    /* ------------------------------------------ */
+    /* Basic SEO */
+    /* ------------------------------------------ */
+
+    {
+      name: 'description',
+
+      content:
+        'Track pushups in real-time using AI pose detection on RepWar.live. Get accurate rep counting, anti-cheat validation, posture analysis, and workout performance insights.',
+    },
+
+    {
+      name: 'keywords',
+
+      content:
+        'AI pushup counter, pushup tracker, AI fitness app, rep counter, workout tracker, pushup form checker, bodyweight workout, fitness AI, pose detection pushups, repwar live',
+    },
+
+    {
+      name: 'robots',
+
+      content: 'index, follow',
+    },
+
+    /* ------------------------------------------ */
+    /* Open Graph */
+    /* ------------------------------------------ */
+
+    {
+      property: 'og:type',
+
+      content: 'website',
+    },
+
+    {
+      property: 'og:site_name',
+
+      content: 'RepWar.live',
+    },
+
+    {
+      property: 'og:title',
+
+      content: 'AI Pushup Counter | RepWar.live',
+    },
+
+    {
+      property: 'og:description',
+
+      content:
+        'Real-time AI pushup counting with posture validation, anti-cheat detection, form scoring, and fitness tracking.',
+    },
+
+    {
+      property: 'og:url',
+
+      content: 'https://repwar.live',
+    },
+
+    {
+      property: 'og:image',
+
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+
+    {
+      property: 'og:image:width',
+
+      content: '1200',
+    },
+
+    {
+      property: 'og:image:height',
+
+      content: '630',
+    },
+
+    /* ------------------------------------------ */
+    /* Twitter */
+    /* ------------------------------------------ */
+
+    {
+      name: 'twitter:card',
+
+      content: 'summary_large_image',
+    },
+
+    {
+      name: 'twitter:title',
+
+      content: 'AI Pushup Counter | RepWar.live',
+    },
+
+    {
+      name: 'twitter:description',
+
+      content: 'AI-powered pushup tracker with live form analysis and anti-cheat detection.',
+    },
+
+    {
+      name: 'twitter:image',
+
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+
+    /* ------------------------------------------ */
+    /* Mobile / PWA */
+    /* ------------------------------------------ */
+
+    {
+      name: 'theme-color',
+
+      content: '#0d1117',
+    },
+
+    {
+      name: 'apple-mobile-web-app-capable',
+
+      content: 'yes',
+    },
+
+    {
+      name: 'apple-mobile-web-app-status-bar-style',
+
+      content: 'black-translucent',
+    },
+  ],
+
+  /* -------------------------------------------- */
+  /* Canonical */
+  /* -------------------------------------------- */
+
+  link: [
+    {
+      rel: 'canonical',
+
+      href: 'https://repwar.live',
+    },
+  ],
+
+  /* -------------------------------------------- */
+  /* Structured Data */
+  /* -------------------------------------------- */
+
+  script: [
+    {
+      type: 'application/ld+json',
+
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+
+        '@type': 'SoftwareApplication',
+
+        name: 'RepWar.live',
+
+        applicationCategory: 'HealthApplication',
+
+        operatingSystem: 'Web Browser',
+
+        description:
+          'AI-powered pushup counter and fitness tracking web app with posture validation, anti-cheat logic, and live form coaching.',
+
+        url: 'https://repwar.live',
+
+        image: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+
+        creator: {
+          '@type': 'Person',
+
+          name: 'Ayush Sinha',
+        },
+
+        publisher: {
+          '@type': 'Organization',
+
+          name: 'RepWar.live',
+        },
+
+        offers: {
+          '@type': 'Offer',
+
+          price: '0',
+
+          priceCurrency: 'USD',
+        },
+
+        featureList: [
+          'AI pushup counting',
+          'Pose detection',
+          'Anti-cheat workout validation',
+          'Workout tracking',
+          'Live posture analysis',
+          'Fitness leaderboard',
+          'Form score analysis',
+        ],
+      }),
+    },
+
+    {
+      type: 'application/ld+json',
+
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+
+        '@type': 'ExerciseAction',
+
+        name: 'Pushup Workout Tracking',
+
+        exerciseType: 'Push-up',
+
+        description: 'Track pushups in real-time using AI posture and rep detection.',
+
+        instrument: 'Bodyweight',
+
+        object: {
+          '@type': 'SoftwareApplication',
+
+          name: 'RepWar.live',
+        },
+      }),
+    },
+  ],
+})
 </script>
 
 <style scoped>

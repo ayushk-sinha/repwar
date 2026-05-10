@@ -60,9 +60,177 @@
 <script setup>
 import { ref } from 'vue'
 import ReadBlog from '@/BlogComponents/ReadBlog.vue'
+import { useHead } from '@vueuse/head'
+import { markRaw } from 'vue'
+
 // import PostBlog from '@/BlogComponents/PostBlog.vue'
 
-const activeComponent = ref(ReadBlog)
+/* ------------------------------------------------ */
+/* Avoid Reactive Component Warning */
+/* ------------------------------------------------ */
+
+const activeComponent = ref(markRaw(ReadBlog))
+
+/* ------------------------------------------------ */
+/* SEO */
+/* ------------------------------------------------ */
+
+useHead({
+  title: 'The Journal | RepWar.live Fitness Blog',
+
+  meta: [
+    /* ------------------------------------------------ */
+    /* Basic SEO */
+    /* ------------------------------------------------ */
+
+    {
+      name: 'description',
+      content:
+        'Read fitness articles, workout insights, AI pushup training tips, BMI guides, and competitive fitness content on The Journal by RepWar.live.',
+    },
+
+    {
+      name: 'keywords',
+      content:
+        'fitness blog, pushup training, AI workout tracker, BMI guide, workout motivation, bodyweight fitness, repwar blog, fitness journal',
+    },
+
+    {
+      name: 'robots',
+      content: 'index, follow',
+    },
+
+    /* ------------------------------------------------ */
+    /* Open Graph */
+    /* ------------------------------------------------ */
+
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+
+    {
+      property: 'og:site_name',
+      content: 'RepWar.live',
+    },
+
+    {
+      property: 'og:title',
+      content: 'The Journal | RepWar.live',
+    },
+
+    {
+      property: 'og:description',
+      content:
+        'Explore workout articles, AI fitness insights, training strategies, and health content on The Journal by RepWar.live.',
+    },
+
+    {
+      property: 'og:url',
+      content: 'https://repwar.live/blog',
+    },
+
+    {
+      property: 'og:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+
+    {
+      property: 'og:image:width',
+      content: '1200',
+    },
+
+    {
+      property: 'og:image:height',
+      content: '630',
+    },
+
+    {
+      property: 'og:image:alt',
+      content: 'RepWar.live Fitness Journal',
+    },
+
+    {
+      property: 'og:locale',
+      content: 'en_US',
+    },
+
+    /* ------------------------------------------------ */
+    /* Twitter / X */
+    /* ------------------------------------------------ */
+
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+
+    {
+      name: 'twitter:title',
+      content: 'The Journal | RepWar.live',
+    },
+
+    {
+      name: 'twitter:description',
+      content:
+        'Read workout guides, AI pushup training tips, and competitive fitness content from RepWar.live.',
+    },
+
+    {
+      name: 'twitter:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+  ],
+
+  /* ------------------------------------------------ */
+  /* Canonical */
+  /* ------------------------------------------------ */
+
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://repwar.live/blog',
+    },
+  ],
+
+  /* ------------------------------------------------ */
+  /* Structured Data */
+  /* ------------------------------------------------ */
+
+  script: [
+    {
+      type: 'application/ld+json',
+
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+
+        '@type': 'Blog',
+
+        name: 'The Journal by RepWar.live',
+
+        description:
+          'Fitness and AI workout blog featuring pushup training guides, BMI insights, and competitive fitness content.',
+
+        url: 'https://repwar.live/blog',
+
+        publisher: {
+          '@type': 'Organization',
+
+          name: 'RepWar.live',
+
+          url: 'https://repwar.live',
+        },
+
+        about: {
+          '@type': 'SoftwareApplication',
+
+          name: 'RepWar.live',
+
+          applicationCategory: 'HealthApplication',
+        },
+      }),
+    },
+  ],
+})
 </script>
 
 <style scoped>

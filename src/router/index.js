@@ -72,6 +72,11 @@ const router = createRouter({
       name: 'Post Blogs side',
       component: PostSideView,
     },
+    {
+      path: '/blogs-page/:slug',
+      name: 'sideblogread',
+      component: () => import('@/views/SideBarBlogView.vue'),
+    },
   ],
 })
 

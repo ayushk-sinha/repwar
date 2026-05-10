@@ -132,6 +132,169 @@
 
 <script setup>
 import SideNavBar from '@/components/SideNavBar.vue'
+import { useHead } from '@vueuse/head'
+
+useHead({
+  title: 'Terms & Conditions | RepWar.live',
+
+  meta: [
+    /* ------------------------------------------------ */
+    /* Basic SEO */
+    /* ------------------------------------------------ */
+
+    {
+      name: 'description',
+      content:
+        'Read the official RepWar.live Terms & Conditions covering leaderboard rules, user submissions, content moderation, fair competition, BMI disclaimer, and platform usage policies.',
+    },
+
+    {
+      name: 'keywords',
+      content:
+        'RepWar terms, fitness app terms, leaderboard rules, workout competition rules, AI pushup tracker policy, user submission policy',
+    },
+
+    {
+      name: 'robots',
+      content: 'index, follow',
+    },
+
+    {
+      name: 'author',
+      content: 'RepWar.live',
+    },
+
+    /* ------------------------------------------------ */
+    /* Open Graph */
+    /* ------------------------------------------------ */
+
+    {
+      property: 'og:type',
+      content: 'website',
+    },
+
+    {
+      property: 'og:site_name',
+      content: 'RepWar.live',
+    },
+
+    {
+      property: 'og:title',
+      content: 'Terms & Conditions | RepWar.live',
+    },
+
+    {
+      property: 'og:description',
+      content:
+        'Official terms and conditions for using RepWar.live including fair competition, moderation, and leaderboard policies.',
+    },
+
+    {
+      property: 'og:url',
+      content: 'https://repwar.live/terms-and-conditions',
+    },
+
+    {
+      property: 'og:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+
+    {
+      property: 'og:image:width',
+      content: '1200',
+    },
+
+    {
+      property: 'og:image:height',
+      content: '630',
+    },
+
+    {
+      property: 'og:image:alt',
+      content: 'RepWar.live Terms and Conditions',
+    },
+
+    {
+      property: 'og:locale',
+      content: 'en_US',
+    },
+
+    /* ------------------------------------------------ */
+    /* Twitter / X */
+    /* ------------------------------------------------ */
+
+    {
+      name: 'twitter:card',
+      content: 'summary_large_image',
+    },
+
+    {
+      name: 'twitter:title',
+      content: 'Terms & Conditions | RepWar.live',
+    },
+
+    {
+      name: 'twitter:description',
+      content:
+        'Review the official RepWar.live rules, platform policies, leaderboard guidelines, and moderation standards.',
+    },
+
+    {
+      name: 'twitter:image',
+      content: 'https://www.repwar.live/assets/pushuplogow-CI1Ovahn.png',
+    },
+  ],
+
+  /* ------------------------------------------------ */
+  /* Canonical */
+  /* ------------------------------------------------ */
+
+  link: [
+    {
+      rel: 'canonical',
+      href: 'https://repwar.live/terms-and-conditions',
+    },
+  ],
+
+  /* ------------------------------------------------ */
+  /* Structured Data */
+  /* ------------------------------------------------ */
+
+  script: [
+    {
+      type: 'application/ld+json',
+
+      children: JSON.stringify({
+        '@context': 'https://schema.org',
+
+        '@type': 'TermsOfService',
+
+        name: 'RepWar.live Terms & Conditions',
+
+        description:
+          'Official terms and conditions for RepWar.live including leaderboard rules, moderation policies, and user responsibilities.',
+
+        url: 'https://repwar.live/terms-and-conditions',
+
+        publisher: {
+          '@type': 'Organization',
+
+          name: 'RepWar.live',
+
+          url: 'https://repwar.live',
+        },
+
+        about: {
+          '@type': 'SoftwareApplication',
+
+          name: 'RepWar.live',
+
+          applicationCategory: 'HealthApplication',
+        },
+      }),
+    },
+  ],
+})
 </script>
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
