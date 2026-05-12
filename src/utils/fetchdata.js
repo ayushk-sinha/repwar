@@ -7,7 +7,7 @@ export async function fetchLeaderboard(limit = 25) {
   const { data, error } = await supabase
     .from('leaderboard')
     .select('*')
-    .eq('created_at', today)
+    //.eq('created_at', today)
     .order('pushups', { ascending: false })
     .limit(limit)
 
