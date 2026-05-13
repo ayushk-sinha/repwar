@@ -131,6 +131,7 @@
         </div>
       </div>
     </transition>
+    <div id="ad-container-468x60"></div>
 
     <footer class="app-footer"><span class="footer-dot" />&copy; 2026 repWar.live</footer>
   </div>
@@ -178,6 +179,24 @@ onMounted(() => {
 
   //   console.log('🔥 mounted (only once)')
   showPopup.value = true
+  window.atOptions = {
+    key: '5097913d721dd020352e3d40f038d807',
+    format: 'iframe',
+    height: 60,
+    width: 468,
+    params: {},
+  }
+
+  // 2. Create the script element dynamically
+  const script = document.createElement('script')
+  script.src = 'https://www.highperformanceformat.com/5097913d721dd020352e3d40f038d807/invoke.js'
+  script.async = true
+
+  // 3. Append the script specifically into the ad container
+  const container = document.getElementById('ad-container-468x60')
+  if (container) {
+    container.appendChild(script)
+  }
 
   // Hide after 2 seconds
   //   setTimeout(() => {
@@ -447,4 +466,9 @@ function calculatePercentile(pushups) {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 @import '@/assets/homeview.css';
+#ad-container-468x60 {
+  margin: 20px auto;
+  min-height: 60px;
+  width: 468px;
+}
 </style>
