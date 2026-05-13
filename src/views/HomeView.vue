@@ -131,7 +131,8 @@
         </div>
       </div>
     </transition>
-    <div class="overflow-x-auto overflow-x-scroll overflow-x-hidden">
+    <div class="overflow-x-hidden" @click="count++">
+      <span class="app-footer">Ad Click Goal {{ count }} / 4000</span>
       <div id="ad-container-468x60"></div>
     </div>
 
