@@ -22,7 +22,7 @@
           <polyline points="7 10 12 15 17 10" />
           <line x1="12" y1="15" x2="12" y2="3" />
         </svg>
-        {{ downloading ? 'Saving…' : 'Download' }}
+        {{ downloading ? 'Saving…' : 'Download(AD)' }}
       </button>
     </div>
 
@@ -69,6 +69,27 @@
 import { ref, computed } from 'vue'
 import * as htmlToImage from 'html-to-image'
 import { fetchLeaderboard } from '@/utils/fetchdata'
+import { onMounted, onBeforeUnmount } from 'vue'
+let adScript = null
+onMounted(() => {
+  // Create the script element programmatically
+  adScript = document.createElement('script')
+  adScript.setAttribute(
+    'src',
+    'https://pl29431605.profitablecpmratenetwork.com/4e/47/28/4e4728aa3555068c992cb4f9f947ee0b.js',
+  )
+  adScript.setAttribute('async', 'true')
+
+  // Append it to the head
+  document.head.appendChild(adScript)
+})
+
+onBeforeUnmount(() => {
+  // Clean up the script when the user leaves the page
+  if (adScript && document.head.contains(adScript)) {
+    document.head.removeChild(adScript)
+  }
+})
 
 const props = defineProps({ pushups: Number, percentile: Number })
 

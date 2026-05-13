@@ -171,8 +171,6 @@ import { useCamera } from '@/composables/useCamera'
 import { usePoseDetection } from '@/composables/usePoseDetection'
 import { VIOLATION_MSG, VIOLATION_SEVERITY } from '@/utils/pushupLogic'
 import { useHead } from '@vueuse/head'
-import { onMounted, onBeforeUnmount } from 'vue'
-let adScript = null
 
 const emit = defineEmits(['count-updated', 'session-ended'])
 const props = defineProps({
@@ -225,25 +223,6 @@ const formScoreClass = computed(() => {
   if (s >= 90) return 'score-great'
   if (s >= 65) return 'score-ok'
   return 'score-bad'
-})
-onMounted(() => {
-  // Create the script element programmatically
-  adScript = document.createElement('script')
-  adScript.setAttribute(
-    'src',
-    'https://pl29431605.profitablecpmratenetwork.com/4e/47/28/4e4728aa3555068c992cb4f9f947ee0b.js',
-  )
-  adScript.setAttribute('async', 'true')
-
-  // Append it to the head
-  document.head.appendChild(adScript)
-})
-
-onBeforeUnmount(() => {
-  // Clean up the script when the user leaves the page
-  if (adScript && document.head.contains(adScript)) {
-    document.head.removeChild(adScript)
-  }
 })
 
 // ── Watchers ──────────────────────────────────────────────────────────────────

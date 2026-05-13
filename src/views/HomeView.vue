@@ -131,7 +131,9 @@
         </div>
       </div>
     </transition>
-    <div id="ad-container-468x60"></div>
+    <div class="overflow-x-auto overflow-x-scroll overflow-x-hidden">
+      <div id="ad-container-468x60"></div>
+    </div>
 
     <footer class="app-footer"><span class="footer-dot" />&copy; 2026 repWar.live</footer>
   </div>
