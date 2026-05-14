@@ -1,6 +1,6 @@
 <!-- HomeView.vue -->
 <template>
-  <div class="app-shell" @click="update()">
+  <div class="app-shell">
     <SideNavBar />
     <!-- <div v-if="showPopup" class="popup">
       <div class="popup-content">Read Disclaimer</div>
