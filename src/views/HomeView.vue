@@ -153,6 +153,7 @@ import BmiCalulator from '@/components/BmiCalulator.vue'
 import StoryCard from '@/components/StoryCard.vue'
 import { fetchLeaderboard } from '@/utils/fetchdata'
 import { useHead } from '@vueuse/head'
+import { supabase } from '@/utils/supabase'
 
 const count = ref(0)
 const title = 'repWar.live'
@@ -454,14 +455,23 @@ async function savePlayer(player) {
   }
   players.value.unshift(player)
   players.value.sort((a, b) => b.pushups - a.pushups)
-  storyData.value = { pushups: player.pushups, percentile: calculatePercentile(player.pushups) }
+  storyData.value = { pushups: player.pushups, percentile: await calculatePercentile(player.email) }
   showForm.value = false
   await nextTick()
   showStory.value = true
 }
 
-function calculatePercentile(pushups) {
-  return Math.min(99, Math.floor(pushups / 2))
+async function calculatePercentile(email) {
+  const { data, error } = await supabase.rpc('get_percentile', {
+    p_key: email,
+  })
+
+  if (error) {
+    console.error('Error fetching percentile:', error)
+    return 0
+  }
+
+  return data
 }
 </script>
 
