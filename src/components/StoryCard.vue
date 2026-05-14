@@ -69,28 +69,6 @@
 import { ref, computed } from 'vue'
 import * as htmlToImage from 'html-to-image'
 import { fetchLeaderboard } from '@/utils/fetchdata'
-import { onMounted, onBeforeUnmount } from 'vue'
-let adScript = null
-onMounted(() => {
-  // Create the script element programmatically
-  adScript = document.createElement('script')
-  adScript.setAttribute(
-    'src',
-    'https://pl29431605.profitablecpmratenetwork.com/4e/47/28/4e4728aa3555068c992cb4f9f947ee0b.js',
-  )
-  adScript.setAttribute('async', 'true')
-
-  // Append it to the head
-  document.head.appendChild(adScript)
-})
-
-onBeforeUnmount(() => {
-  // Clean up the script when the user leaves the page
-  if (adScript && document.head.contains(adScript)) {
-    document.head.removeChild(adScript)
-  }
-})
-
 const props = defineProps({ pushups: Number, percentile: Number })
 
 const cardRef = ref(null)
@@ -110,19 +88,61 @@ const gradients = [
 
 const bgStyle = computed(() => gradients[Math.floor(Math.random() * gradients.length)])
 
+const loadAdScript = () => {
+  return new Promise((resolve, reject) => {
+    const scriptSrc =
+      'https://pl29431605.profitablecpmratenetwork.com/4e/47/28/4e4728aa3555068c992cb4f9f947ee0b.js'
+
+    // Prevent duplicate script loading
+    const existingScript = document.querySelector(`script[src="${scriptSrc}"]`)
+
+    if (existingScript) {
+      resolve()
+      return
+    }
+
+    const script = document.createElement('script')
+    script.src = scriptSrc
+    script.async = true
+
+    script.onload = () => resolve()
+    script.onerror = () => reject(new Error('Ad script failed to load'))
+
+    document.head.appendChild(script)
+  })
+}
+
 const downloadImage = async () => {
   fetchLeaderboard()
+
   if (!cardRef.value || downloading.value) return
+
   downloading.value = true
+
   try {
+    // Load ad script on click
+    await loadAdScript()
+
+    // Optional small delay for popup/ad trigger
+    await new Promise((r) => setTimeout(r, 400))
+
     const dataUrl = await htmlToImage.toPng(cardRef.value, {
       pixelRatio: 7,
       backgroundColor: null,
     })
+
     const link = document.createElement('a')
-    link.download = 'repwar-story.png'
+
+    // Dynamic filename
+    const timestamp = Date.now()
+    const randomId = Math.floor(Math.random() * 10000)
+
+    link.download = `repwar-story-pushups-${timestamp}-${randomId}.png`
+
     link.href = dataUrl
     link.click()
+  } catch (err) {
+    console.error(err)
   } finally {
     downloading.value = false
   }
