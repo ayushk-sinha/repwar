@@ -169,9 +169,9 @@ const showPopup = ref(false)
 // const homeStore = useHomeStore()
 const storyData = ref({ pushups: 0, percentile: 0 })
 
-const update = function () {
-  fetchLeaderboard() // More new logic
-}
+// const update = function () {
+//   fetchLeaderboard() // More new logic
+// }
 defineOptions({
   name: 'HomeView',
 })
