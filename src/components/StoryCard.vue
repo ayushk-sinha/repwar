@@ -69,7 +69,11 @@
 import { ref, computed } from 'vue'
 import * as htmlToImage from 'html-to-image'
 import { fetchLeaderboard } from '@/utils/fetchdata'
-const props = defineProps({ pushups: Number, percentile: Number })
+
+const props = defineProps({
+  pushups: Number,
+  percentile: Number,
+})
 
 const cardRef = ref(null)
 const downloading = ref(false)
@@ -88,30 +92,6 @@ const gradients = [
 
 const bgStyle = computed(() => gradients[Math.floor(Math.random() * gradients.length)])
 
-const loadAdScript = () => {
-  return new Promise((resolve, reject) => {
-    const scriptSrc =
-      'https://pl29431605.profitablecpmratenetwork.com/4e/47/28/4e4728aa3555068c992cb4f9f947ee0b.js'
-
-    // Prevent duplicate script loading
-    const existingScript = document.querySelector(`script[src="${scriptSrc}"]`)
-
-    if (existingScript) {
-      resolve()
-      return
-    }
-
-    const script = document.createElement('script')
-    script.src = scriptSrc
-    script.async = true
-
-    script.onload = () => resolve()
-    script.onerror = () => reject(new Error('Ad script failed to load'))
-
-    document.head.appendChild(script)
-  })
-}
-
 const downloadImage = async () => {
   fetchLeaderboard()
 
@@ -120,12 +100,6 @@ const downloadImage = async () => {
   downloading.value = true
 
   try {
-    // Load ad script on click
-    await loadAdScript()
-
-    // Optional small delay for popup/ad trigger
-    await new Promise((r) => setTimeout(r, 400))
-
     const dataUrl = await htmlToImage.toPng(cardRef.value, {
       pixelRatio: 7,
       backgroundColor: null,
@@ -133,16 +107,17 @@ const downloadImage = async () => {
 
     const link = document.createElement('a')
 
-    // Dynamic filename
-    const timestamp = Date.now()
-    const randomId = Math.floor(Math.random() * 10000)
+    const now = new Date()
 
-    link.download = `repwar-story-pushups-${timestamp}-${randomId}.png`
+    const formattedDate = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}-${String(now.getTime()).padStart(2, '0')}`
+
+    link.download = `repwar-story-${props.pushups}pushups-${formattedDate}.png`
 
     link.href = dataUrl
+
     link.click()
   } catch (err) {
-    console.error(err)
+    console.error('Download failed:', err)
   } finally {
     downloading.value = false
   }
