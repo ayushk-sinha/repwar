@@ -50,7 +50,7 @@
             <p class="card-reps-label">Push-ups 💪</p>
             <div class="card-outperformed">I outperformed</div>
             <div class="card-percentile">{{ percentile }}%</div>
-            <div class="card-of-users">of users 🔥</div>
+            <div class="card-of-users">of users worldwide🔥</div>
             <div class="card-challenge">What are your excuses, Weakling?</div>
           </div>
 
