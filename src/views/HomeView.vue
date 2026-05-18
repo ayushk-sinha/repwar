@@ -5,6 +5,19 @@
     <!-- <div v-if="showPopup" class="popup">
       <div class="popup-content">Read Disclaimer</div>
     </div> -->
+    <!-- Desktop Left Ads -->
+    <div class="desktop-ads left-ads">
+      <div v-for="i in 5" :key="'left-' + i" class="ad-slot">
+        <div :id="`ad-container-left-${i}`"></div>
+      </div>
+    </div>
+
+    <!-- Desktop Right Ads -->
+    <div class="desktop-ads right-ads">
+      <div v-for="i in 5" :key="'right-' + i" class="ad-slot">
+        <div :id="`ad-container-right-${i}`"></div>
+      </div>
+    </div>
 
     <!-- Hero -->
     <section class="hero-section">
@@ -177,34 +190,54 @@ defineOptions({
   name: 'HomeView',
 })
 onMounted(() => {
-  //initDeviceId()
-  //   homeStore.fetchHomeData()
-
-  //   console.log('🔥 mounted (only once)')
   showPopup.value = true
-  window.atOptions = {
-    key: '5097913d721dd020352e3d40f038d807',
-    format: 'iframe',
-    height: 60,
-    width: 468,
-    params: {},
-  }
 
-  // 2. Create the script element dynamically
-  const script = document.createElement('script')
-  script.src = 'https://www.highperformanceformat.com/5097913d721dd020352e3d40f038d807/invoke.js'
-  script.async = true
+  const createAd = (containerId) => {
+    const container = document.getElementById(containerId)
 
-  // 3. Append the script specifically into the ad container
-  const container = document.getElementById('ad-container-468x60')
-  if (container) {
+    if (!container) return
+
+    // Create unique options each time
+    window.atOptions = {
+      key: '5097913d721dd020352e3d40f038d807',
+      format: 'iframe',
+      height: 60,
+      width: 468,
+      params: {},
+    }
+
+    const script = document.createElement('script')
+
+    script.type = 'text/javascript'
+    script.async = true
+
+    // prevent browser cache reuse
+    script.src =
+      'https://www.highperformanceformat.com/5097913d721dd020352e3d40f038d807/invoke.js?' +
+      Math.random()
+
+    container.innerHTML = ''
     container.appendChild(script)
   }
 
-  // Hide after 2 seconds
-  //   setTimeout(() => {
-  //     showPopup.value = false
-  //   }, 2000)
+  // Small delay between renders
+  let delay = 0
+
+  for (let i = 1; i <= 5; i++) {
+    setTimeout(() => {
+      createAd(`ad-container-left-${i}`)
+    }, delay)
+
+    delay += 400
+  }
+
+  for (let i = 1; i <= 5; i++) {
+    setTimeout(() => {
+      createAd(`ad-container-right-${i}`)
+    }, delay)
+
+    delay += 400
+  }
 })
 // onActivated(() => console.log('activated'))
 // onDeactivated(() => console.log('deactivated'))
@@ -482,5 +515,41 @@ async function calculatePercentile(email) {
   margin: 20px auto;
   min-height: 60px;
   width: 468px;
+}
+/* Desktop side ads */
+.desktop-ads {
+  position: fixed;
+  top: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 5;
+}
+
+.left-ads {
+  left: 18px;
+}
+
+.right-ads {
+  right: 18px;
+}
+
+.ad-slot {
+  width: 475px;
+  min-height: 70px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Hide on mobile/tablet */
+@media (max-width: 1400px) {
+  .desktop-ads {
+    display: none;
+  }
 }
 </style>
