@@ -5,19 +5,6 @@
     <!-- <div v-if="showPopup" class="popup">
       <div class="popup-content">Read Disclaimer</div>
     </div> -->
-    <!-- Desktop Left Ads -->
-    <div class="desktop-ads left-ads">
-      <div v-for="i in 5" :key="'left-' + i" class="ad-slot">
-        <div :id="`ad-container-left-${i}`"></div>
-      </div>
-    </div>
-
-    <!-- Desktop Right Ads -->
-    <div class="desktop-ads right-ads">
-      <div v-for="i in 5" :key="'right-' + i" class="ad-slot">
-        <div :id="`ad-container-right-${i}`"></div>
-      </div>
-    </div>
 
     <!-- Hero -->
     <section class="hero-section">
@@ -191,53 +178,6 @@ defineOptions({
 })
 onMounted(() => {
   showPopup.value = true
-
-  const createAd = (containerId) => {
-    const container = document.getElementById(containerId)
-
-    if (!container) return
-
-    // Create unique options each time
-    window.atOptions = {
-      key: '5097913d721dd020352e3d40f038d807',
-      format: 'iframe',
-      height: 60,
-      width: 468,
-      params: {},
-    }
-
-    const script = document.createElement('script')
-
-    script.type = 'text/javascript'
-    script.async = true
-
-    // prevent browser cache reuse
-    script.src =
-      'https://www.highperformanceformat.com/5097913d721dd020352e3d40f038d807/invoke.js?' +
-      Math.random()
-
-    container.innerHTML = ''
-    container.appendChild(script)
-  }
-
-  // Small delay between renders
-  let delay = 0
-
-  for (let i = 1; i <= 5; i++) {
-    setTimeout(() => {
-      createAd(`ad-container-left-${i}`)
-    }, delay)
-
-    delay += 400
-  }
-
-  for (let i = 1; i <= 5; i++) {
-    setTimeout(() => {
-      createAd(`ad-container-right-${i}`)
-    }, delay)
-
-    delay += 400
-  }
 })
 // onActivated(() => console.log('activated'))
 // onDeactivated(() => console.log('deactivated'))
