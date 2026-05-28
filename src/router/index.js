@@ -29,6 +29,7 @@ const SideBarBlogView = () => import('@/views/SideBarBlogView.vue')
 const PostBlog = () => import('@/BlogComponents/PostBlog.vue')
 
 const PostSideView = () => import('@/views/PostSideView.vue')
+const sampleview = () => import('@/views/blogs/sampleview.vue')
 
 /* ------------------------------------------------ */
 /* Router */
@@ -82,6 +83,13 @@ const router = createRouter({
       name: 'AboutUs',
 
       component: AboutView,
+    },
+    {
+      path: '/sampleview',
+
+      name: 'sampleview',
+
+      component: sampleview,
     },
 
     {
