@@ -2,6 +2,7 @@
 <template>
   <div class="app-shell">
     <SideNavBar />
+    <div class="ad-banner mt-15" ref="adContainer"></div>
     <!-- <div v-if="showPopup" class="popup">
       <div class="popup-content">Read Disclaimer</div>
     </div> -->
@@ -9,7 +10,7 @@
     <!-- Hero -->
     <section class="hero-section">
       <div class="hero-inner">
-        <div class="hero-badge mt-15">
+        <div class="hero-badge">
           <span class="badge-dot" />
           Live Rankings Active
         </div>
@@ -165,15 +166,33 @@ const players = ref([])
 const showPopup = ref(false)
 // const homeStore = useHomeStore()
 const storyData = ref({ pushups: 0, percentile: 0 })
-
+const adContainer = ref(null)
 // const update = function () {
 //   fetchLeaderboard() // More new logic
 // }
+
 defineOptions({
   name: 'HomeView',
 })
 onMounted(() => {
   showPopup.value = true
+
+  // Inject ad
+  if (adContainer.value) {
+    window.atOptions = {
+      key: 'f7efffede6b20cfc598664a6620cba53',
+      format: 'iframe',
+      height: 50,
+      width: 320,
+      params: {},
+    }
+    console.log('atOptions set:', window.atOptions)
+
+    const script = document.createElement('script')
+    script.src = 'https://www.highperformanceformat.com/f7efffede6b20cfc598664a6620cba53/invoke.js'
+    script.async = true
+    adContainer.value.appendChild(script)
+  }
 })
 // onActivated(() => console.log('activated'))
 // onDeactivated(() => console.log('deactivated'))
@@ -447,10 +466,11 @@ async function calculatePercentile(email) {
 <style scoped>
 @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 @import '@/assets/homeview.css';
-#ad-container-468x60 {
-  margin: 20px auto;
-  min-height: 60px;
-  width: 468px;
+.ad-banner {
+  display: flex;
+  justify-content: center;
+  padding: 8px 0;
+  background: transparent;
 }
 /* Desktop side ads */
 .desktop-ads {
