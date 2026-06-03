@@ -29,7 +29,7 @@ const SideBarBlogView = () => import('@/views/SideBarBlogView.vue')
 const PostBlog = () => import('@/BlogComponents/PostBlog.vue')
 
 const PostSideView = () => import('@/views/PostSideView.vue')
-const sampleview = () => import('@/views/blogs/sampleview.vue')
+const PushupsBlog = () => import('@/views/blogs/50Pushupsblog.vue')
 
 /* ------------------------------------------------ */
 /* Router */
@@ -85,13 +85,16 @@ const router = createRouter({
       component: AboutView,
     },
     {
-      path: '/sampleview',
-
-      name: 'sampleview',
-
-      component: sampleview,
+      path: '/50-pushups-a-day-benefits',
+      name: 'PushupsBlog',
+      component: PushupsBlog,
+      meta: {
+        title: '50 Push-Ups a Day: 7 Proven Things That Happen to Your Body',
+        canonical: 'https://repwar.com/blog/50-pushups-a-day-benefits',
+      },
     },
 
+    ,
     {
       path: '/Privacy-Policy',
 

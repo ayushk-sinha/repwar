@@ -18,6 +18,7 @@ const staticRoutes = [
   '/terms-and-conditions',
   '/health-disclaimer',
   '/blogs-page',
+  '/50-pushups-a-day-benefits',
 ]
 
 export default async function handler(req, res) {

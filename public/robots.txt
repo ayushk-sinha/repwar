@@ -1,18 +1,65 @@
-# robots.txt — repwar.live
-# https://developers.google.com/search/docs/crawling-indexing/robots/intro
- 
-# Allow all crawlers to access everything by default
+# robots.txt for www.repwar.live
+# Controls crawl access for search engines AND AI training crawlers
+
+# ── General Search Engines ────────────────────────────────────────────
 User-agent: *
 Allow: /
- 
-# Block user-specific and private pages (not useful in search results)
-Disallow: /profile/
-Disallow: /settings/
-Disallow: /dashboard/
 Disallow: /api/
- 
-# Block any query-string URLs that are duplicates of clean URLs
-Disallow: /*?*
- 
-# Point crawlers to the sitemap
+Disallow: /admin/
+Disallow: /private/
+Disallow: /*.json$
+Crawl-delay: 1
+
+# ── Google ─────────────────────────────────────────────────────────────
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+Disallow: /api/
+
+# ── Bing / Microsoft ───────────────────────────────────────────────────
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# ── AI / LLM Crawlers (allow for GEO — Generative Engine Optimisation) ─
+# Allowing these helps your content appear in AI-generated answers (ChatGPT, Perplexity, etc.)
+
+User-agent: GPTBot
+Allow: /blog/
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /blog/
+# Set to Disallow: / if you want to block Google Gemini training
+
+User-agent: CCBot
+Disallow: /
+# Block Common Crawl (used for generic AI training datasets you don't control)
+
+User-agent: ia_archiver
+Allow: /
+
+# ── Sitemap ────────────────────────────────────────────────────────────
 Sitemap: https://www.repwar.live/sitemap.xml
+Sitemap: https://www.repwar.live/sitemap-blog.xml

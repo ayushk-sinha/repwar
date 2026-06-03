@@ -1,20 +1,44 @@
 import { supabase } from './utils/supabase'
 
+/* ------------------------------------------------ */
+/* Static Routes (always prerendered)               */
+/* ------------------------------------------------ */
+
+const STATIC_ROUTES = [
+  '/',
+  '/blog',
+  '/blogs-page',
+  '/About-Us',
+  '/Privacy-Policy',
+  '/Contact-Us',
+  '/terms-and-conditions',
+  '/health-disclaimer',
+
+  /* ------------------------------------------ */
+  /* Hard-coded Blog Pages                        */
+  /* ------------------------------------------ */
+  '/50-pushups-a-day-benefits',
+]
+
+/* ------------------------------------------------ */
+/* Dynamic Routes from Supabase                     */
+/* ------------------------------------------------ */
+
 export async function getDynamicRoutes() {
   /* ------------------------------------------ */
-  /* Fetch Blogs */
+  /* Fetch Blogs                                  */
   /* ------------------------------------------ */
 
   const { data: blogs, error: blogsError } = await supabase.from('blogs').select('slug')
 
   /* ------------------------------------------ */
-  /* Fetch Side Blogs */
+  /* Fetch Side Blogs                             */
   /* ------------------------------------------ */
 
   const { data: sideBlogs, error: sideBlogsError } = await supabase.from('sideblogs').select('slug')
 
   /* ------------------------------------------ */
-  /* Error Handling */
+  /* Error Handling                               */
   /* ------------------------------------------ */
 
   if (blogsError) {
@@ -26,13 +50,13 @@ export async function getDynamicRoutes() {
   }
 
   /* ------------------------------------------ */
-  /* Main Blog Routes */
+  /* Main Blog Routes                             */
   /* ------------------------------------------ */
 
   const blogRoutes = (blogs || []).filter((blog) => blog.slug).map((blog) => `/blog/${blog.slug}`)
 
   /* ------------------------------------------ */
-  /* Side Blog Routes */
+  /* Side Blog Routes                             */
   /* ------------------------------------------ */
 
   const sideBlogRoutes = (sideBlogs || [])
@@ -40,8 +64,10 @@ export async function getDynamicRoutes() {
     .map((blog) => `/blogs-page/${blog.slug}`)
 
   /* ------------------------------------------ */
-  /* Merge All Routes */
+  /* Merge Static + Dynamic (deduplicated)        */
   /* ------------------------------------------ */
 
-  return [...blogRoutes, ...sideBlogRoutes]
+  const allRoutes = [...new Set([...STATIC_ROUTES, ...blogRoutes, ...sideBlogRoutes])]
+
+  return allRoutes
 }
