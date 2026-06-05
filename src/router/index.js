@@ -30,6 +30,7 @@ const PostBlog = () => import('@/BlogComponents/PostBlog.vue')
 
 const PostSideView = () => import('@/views/PostSideView.vue')
 const sampleview = () => import('@/views/blogs/sampleview.vue')
+const pushupsblogView = () => import('@/views/blogs/PushupsblogView.vue')
 
 /* ------------------------------------------------ */
 /* Router */
@@ -90,6 +91,32 @@ const router = createRouter({
       name: 'sampleview',
 
       component: sampleview,
+    },
+    {
+      path: '/50-pushups-a-day-benefits',
+      name: 'pushupsblogView',
+      component: pushupsblogView,
+      meta: {
+        title: '50 pushups a day: 7 Proven Things That Happen to Your Body',
+        description:
+          'Discover the 7 scientifically backed changes that happen when you do 30 push-ups every day — from heart health and bone density to blood sugar control and brain protection.',
+        canonical: 'https://repwar.live/50-pushups-a-day-benefits',
+        ogImage: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80',
+        ogType: 'article',
+        publishDate: '2025-06-01',
+        articleSection: 'Fitness Science',
+        keywords:
+          '50 push-ups a day, push-up benefits, daily push-ups results, push-ups heart health, bodyweight exercise benefits',
+        prerender: true,
+        breadcrumbs: [
+          { name: 'Home', url: 'https://repwar.live' },
+          { name: 'Blog', url: 'https://repwar.live/blogs' },
+          {
+            name: '50 Push-Ups a Day: 7 Proven Things',
+            url: 'https://repwar.live/50-pushups-a-day-benefits',
+          },
+        ],
+      },
     },
 
     {

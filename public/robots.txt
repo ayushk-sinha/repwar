@@ -10,6 +10,51 @@ Disallow: /profile/
 Disallow: /settings/
 Disallow: /dashboard/
 Disallow: /api/
+
+User-agent: Googlebot
+Allow: /
+Disallow: /api/
+Crawl-delay: 0
+ 
+User-agent: Googlebot-Image
+Allow: /
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: GPTBot
+Allow: /blog/
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+ 
+User-agent: ChatGPT-User
+Allow: /
+ 
+User-agent: Claude-Web
+Allow: /
+ 
+User-agent: anthropic-ai
+Allow: /
+ 
+User-agent: PerplexityBot
+Allow: /
+ 
+User-agent: cohere-ai
+Allow: /
+ 
+User-agent: Google-Extended
+Allow: /blog/
+# Set to Disallow: / if you want to block Google Gemini training
+ 
+User-agent: CCBot
+Disallow: /
+# Block Common Crawl (used for generic AI training datasets you don't control)
+ 
+User-agent: ia_archiver
+Allow: /
  
 # Block any query-string URLs that are duplicates of clean URLs
 Disallow: /*?*
