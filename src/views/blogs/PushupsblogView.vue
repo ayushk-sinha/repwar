@@ -1,6 +1,6 @@
 <template>
   <article class="blog-article" itemscope itemtype="https://schema.org/BlogPosting">
-    <!-- SEO Hidden Meta (injected via useHead/useSeoMeta in setup) -->
+    <!-- SEO Microdata -->
     <meta itemprop="headline" :content="meta.title" />
     <meta itemprop="description" :content="meta.description" />
     <meta itemprop="datePublished" :content="meta.publishDate" />
@@ -9,8 +9,12 @@
     <meta itemprop="publisher" content="RepWar" />
     <link itemprop="mainEntityOfPage" :href="meta.canonicalUrl" />
 
-    <!-- Hero Section -->
-    <div ref="adContainer" class="ad-banner"></div>
+    <!-- Ad Banner (client-only — never blocks SSG render) -->
+    <ClientOnly>
+      <div ref="adContainer" class="ad-banner"></div>
+    </ClientOnly>
+
+    <!-- Hero -->
     <header class="blog-hero">
       <div class="hero-inner">
         <div class="blog-category-pill">RepWar Fitness Science</div>
@@ -19,12 +23,9 @@
         </h1>
         <p class="blog-subtitle">
           How one humble movement — costing you two minutes and zero equipment — rewires your heart,
-          bones, brain, and metabolism from the inside out. visit<a
-            href="https://www.repwar.live/"
-            style="color: blue"
-          >
-            RepWar push-ups counter </a
-          >to count yourp push-ups.
+          bones, brain, and metabolism from the inside out. Visit
+          <a href="https://www.repwar.live/" style="color: blue">RepWar push-ups counter</a>
+          to count your push-ups.
         </p>
         <div class="blog-meta-row">
           <span class="meta-item">
@@ -49,8 +50,6 @@
           <span class="meta-item">RepWar Editorial</span>
         </div>
       </div>
-
-      <!-- Hero Image -->
       <div class="hero-image-wrap">
         <img
           src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80&auto=format&fit=crop"
@@ -68,7 +67,6 @@
 
     <!-- Article Body -->
     <div class="blog-body" itemprop="articleBody">
-      <!-- Intro -->
       <section class="blog-section intro-section">
         <p class="lead-para">
           Fifty push-ups a day might sound almost too small to make any real difference. But there's
@@ -86,14 +84,10 @@
           you can't yet do a full push-up, because wherever you're starting from — whether you're
           20, 50, or 80 — this applies to you.
         </p>
-
-        <!-- TOC -->
         <nav class="toc-box" aria-label="Table of contents">
           <p class="toc-heading">In this article</p>
           <ol class="toc-list">
-            <li>
-              <a href="#muscle-mass">1. Muscle mass starts to grow</a>
-            </li>
+            <li><a href="#muscle-mass">1. Muscle mass starts to grow</a></li>
             <li><a href="#heart-health">2. Your heart gets stronger</a></li>
             <li><a href="#bone-density">3. Bone density increases</a></li>
             <li><a href="#blood-sugar">4. Blood sugar becomes easier to control</a></li>
@@ -104,7 +98,6 @@
         </nav>
       </section>
 
-      <!-- Why It Matters Context -->
       <section class="blog-section">
         <div class="context-callout">
           <div class="callout-icon">💡</div>
@@ -120,11 +113,9 @@
         </div>
       </section>
 
-      <!-- Benefit 1 -->
       <section class="blog-section benefit-section" id="muscle-mass" itemprop="articleSection">
         <div class="benefit-number-badge">01</div>
         <h2>Muscle Mass Starts to Grow</h2>
-
         <figure class="inline-figure">
           <img
             src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=75&auto=format&fit=crop"
@@ -137,7 +128,6 @@
             The push-up engages chest, shoulders, triceps, and deep core simultaneously.
           </figcaption>
         </figure>
-
         <p>
           Every push-up fires a cascade inside your cells. Your muscles — particularly your
           pectorals, deltoids, and triceps — experience tiny microscopic tears as the fibres strain
@@ -151,14 +141,12 @@
           for muscle-building. Every set of push-ups flips that switch. Every night your body
           rebuilds a slightly more capable version of itself.
         </p>
-
         <div class="stat-highlight">
           <span class="stat-number">3–4 weeks</span>
           <span class="stat-label"
             >before noticeable strength changes begin to appear with daily push-up training</span
           >
         </div>
-
         <p>
           The beautiful efficiency here is that the push-up isn't just an arm exercise. Supporting
           your bodyweight in that straight, rigid line simultaneously recruits your core, glutes,
@@ -167,11 +155,9 @@
         </p>
       </section>
 
-      <!-- Benefit 2 -->
       <section class="blog-section benefit-section" id="heart-health" itemprop="articleSection">
         <div class="benefit-number-badge">02</div>
         <h2>Your Heart Gets Genuinely Stronger</h2>
-
         <p>
           Most people don't expect a heart workout from push-ups — that's what cardio is for, right?
           Wrong. When you push your entire body weight off the floor, the large muscles in your
@@ -184,7 +170,6 @@
           piece of work to do. Over weeks and months, it adapts — becoming more efficient, moving
           more blood with every single beat.
         </p>
-
         <div class="research-block">
           <div class="research-label">Research Spotlight</div>
           <p>
@@ -196,18 +181,15 @@
             <em>better than a treadmill stress test did</em>.
           </p>
         </div>
-
         <p>
           When you train towards 50 push-ups a day, you're quietly training the one organ that has
           to keep going for every second of the rest of your life.
         </p>
       </section>
 
-      <!-- Benefit 3 -->
       <section class="blog-section benefit-section" id="bone-density" itemprop="articleSection">
         <div class="benefit-number-badge">03</div>
         <h2>Your Bones Get the Signal to Stay Strong</h2>
-
         <figure class="inline-figure">
           <img
             src="https://images.unsplash.com/photo-1506629082955-511b1aa562c8?w=800&q=75&auto=format&fit=crop"
@@ -220,7 +202,6 @@
             Weight-bearing exercises send direct signals to bone-building cells.
           </figcaption>
         </figure>
-
         <p>
           Bone isn't the dead, static scaffolding most people picture. It's
           <strong>living tissue</strong> — constantly being broken down and rebuilt — and your body
@@ -234,7 +215,6 @@
           especially in women at menopause. That's the road that quietly leads to osteoporosis,
           where a fall that should have been nothing instead shatters a hip or wrist.
         </p>
-
         <div class="callout-tip">
           <strong>Key Insight:</strong> A daily dose of load-bearing movement like push-ups is one
           of the very few things that actively tells your bones to hold their ground. Strong bones
@@ -243,11 +223,9 @@
         </div>
       </section>
 
-      <!-- Benefit 4 -->
       <section class="blog-section benefit-section" id="blood-sugar" itemprop="articleSection">
         <div class="benefit-number-badge">04</div>
         <h2>Blood Sugar Becomes Far Easier to Control</h2>
-
         <p>
           This one reaches into your metabolic machinery directly. Muscle is the single largest site
           in your body for storing and burning glucose — the sugar floating in your blood. Normally,
@@ -260,7 +238,6 @@
           surface <em>completely independently of insulin</em>. Every push-up you do pulls sugar
           straight out of your bloodstream without needing any hormonal key to open the lock.
         </p>
-
         <div class="mechanism-box">
           <div class="mechanism-step">
             <span class="step-icon">🏋️</span>
@@ -286,7 +263,6 @@
             </div>
           </div>
         </div>
-
         <p>
           The more muscle you carry and regularly use, the more efficiently your entire body handles
           sugar across the whole day. This matters enormously because chronically high blood sugar
@@ -300,11 +276,9 @@
         </p>
       </section>
 
-      <!-- Benefit 5 -->
       <section class="blog-section benefit-section" id="posture-core" itemprop="articleSection">
         <div class="benefit-number-badge">05</div>
         <h2>Your Posture and Core Start to Transform</h2>
-
         <figure class="inline-figure">
           <img
             src="https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=800&q=75&auto=format&fit=crop"
@@ -318,7 +292,6 @@
             entire time.
           </figcaption>
         </figure>
-
         <p>
           A proper push-up isn't just an arm movement. To hold your body in that straight, rigid
           line from the top of your head to your heels, your deep core muscles, glutes, and the long
@@ -339,18 +312,15 @@
         </p>
       </section>
 
-      <!-- Benefit 6 -->
       <section class="blog-section benefit-section" id="brain-boost" itemprop="articleSection">
         <div class="benefit-number-badge">06</div>
         <h2>Your Brain Gets Fed and Protected</h2>
-
         <p>
           When you exercise — even for a minute or two — working muscles release chemical messengers
           into your bloodstream. Your brain picks up on those and responds by releasing its own. You
           get a rise in endorphins and mood-lifting compounds. Alongside those, you also get a
           substance called <strong>BDNF (Brain-Derived Neurotrophic Factor)</strong>.
         </p>
-
         <div class="highlight-quote">
           <blockquote>
             Think of BDNF as fertiliser for your brain cells. It helps neurons stay healthy,
@@ -358,7 +328,6 @@
             in with age.
           </blockquote>
         </div>
-
         <p>
           People who keep exercising regularly throughout their lives go on to have significantly
           lower rates of dementia and depression, and a noticeably sharper mind well into old age.
@@ -366,18 +335,15 @@
           leave you more alert, steady, and focused — and better able to ride out stress for hours
           afterwards.
         </p>
-
         <p>
           The cost is two minutes. The return lands squarely in the organ you most want to protect
           as you age: your brain.
         </p>
       </section>
 
-      <!-- Benefit 7 -->
       <section class="blog-section benefit-section" id="keystone-habit" itemprop="articleSection">
         <div class="benefit-number-badge">07</div>
         <h2>You Build the Keystone Habit That Pulls Everything Else Along</h2>
-
         <p>
           This last benefit has less to do with physiology and more to do with who you slowly become
           over time. There's something powerful about an exercise that asks for no gym, no
@@ -389,21 +355,18 @@
           lives. None of these adaptations come from one heroic session. They come from showing up
           in a small, repeatable way again and again until your body has no choice but to change.
         </p>
-
         <div class="tip-card">
           <div class="tip-card-header">
-            <span class="tip-icon">⚡</span>
-            <strong>Split Your Sets for Better Results</strong>
+            <span class="tip-icon">⚡</span><strong>Split Your Sets for Better Results</strong>
           </div>
           <p>
-            Try splitting your 50 push-ups into two sets — say 15 in the morning and 15 later in the
+            Try splitting your 50 push-ups into two sets — say 25 in the morning and 25 later in the
             day. When you stimulate muscle, the mTOR build signal stays active for roughly a day or
             two. A moderate set is just enough to flip that switch without requiring days of
             recovery. By giving your muscles a second nudge later, you keep that building window
             open for longer — more growth stimulus across the same 24 hours.
           </p>
         </div>
-
         <p>
           Once you've proved to yourself that you can hold down one daily habit, it has a way of
           spreading. People who start with their 50 push-ups so often find themselves walking more,
@@ -413,14 +376,12 @@
         </p>
       </section>
 
-      <!-- How To Modify Section -->
       <section class="blog-section" id="modifications">
         <h2>What if You Can't Do a Full Push-Up Yet?</h2>
         <p>
           Start where you are. The stimulus is what matters — not the exact form. Here are three
           proven progressions:
         </p>
-
         <div class="modifications-grid">
           <div class="mod-card">
             <div class="mod-level">Beginner</div>
@@ -447,7 +408,6 @@
             </p>
           </div>
         </div>
-
         <p>
           The bones, heart, blood sugar, and brain benefits described above still apply with
           modified push-ups. The physiological signals are the same — the load is simply scaled to
@@ -455,10 +415,8 @@
         </p>
       </section>
 
-      <!-- Summary / FAQ for SEO -->
       <section class="blog-section faq-section" itemscope itemtype="https://schema.org/FAQPage">
         <h2>Frequently Asked Questions</h2>
-
         <div
           class="faq-item"
           itemscope
@@ -469,7 +427,7 @@
           <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
             <div itemprop="text">
               <p>
-                Yes — research and physiology both confirm it. F ifty daily push-ups are enough to
+                Yes — research and physiology both confirm it. Fifty daily push-ups are enough to
                 stimulate muscle growth (via mTOR signalling), improve cardiovascular efficiency,
                 signal bone-building cells, assist blood sugar control via insulin-independent GLUT4
                 activation, and trigger BDNF release in the brain. The key is daily consistency
@@ -478,7 +436,6 @@
             </div>
           </div>
         </div>
-
         <div
           class="faq-item"
           itemscope
@@ -497,7 +454,6 @@
             </div>
           </div>
         </div>
-
         <div
           class="faq-item"
           itemscope
@@ -511,13 +467,11 @@
                 For most people, 50 push-ups daily is a moderate enough stimulus that full recovery
                 happens overnight. The mTOR muscle-building signal stays active for 24–48 hours,
                 which means daily stimulation is actually beneficial. If you experience persistent
-                soreness, consider the split-set approach: 15 morning and 15 evening, rather than
-                all 50 at once.
+                soreness, consider splitting: 25 morning and 25 evening, rather than all 50 at once.
               </p>
             </div>
           </div>
         </div>
-
         <div
           class="faq-item"
           itemscope
@@ -538,7 +492,6 @@
         </div>
       </section>
 
-      <!-- Conclusion -->
       <section class="blog-section conclusion-section">
         <h2>The Bottom Line</h2>
         <p>
@@ -558,49 +511,32 @@
             number — and the number will grow.
           </p>
         </div>
-        <div style="color: blue">
-          <a href="https://www.repwar.live/About-Us">About-Us </a>
-          <a href="https://www.repwar.live/Privacy-Policy">Privacy-Policy </a>
-          <a href="https://www.repwar.live/Contact-Us">Contact-Us </a>
-          <a href="https://www.repwar.live/terms-and-conditions">terms-and-conditions </a>
-          <a href="https://www.repwar.live/health-disclaimer">health-disclaimer</a>
-        </div>
+        <nav class="footer-links" aria-label="Site links">
+          <a href="https://www.repwar.live/About-Us">About Us</a>
+          <a href="https://www.repwar.live/Privacy-Policy">Privacy Policy</a>
+          <a href="https://www.repwar.live/Contact-Us">Contact Us</a>
+          <a href="https://www.repwar.live/terms-and-conditions">Terms &amp; Conditions</a>
+          <a href="https://www.repwar.live/health-disclaimer">Health Disclaimer</a>
+        </nav>
       </section>
     </div>
-    <!-- end .blog-body -->
-
-    <!-- Author / Source Block -->
-    <!-- <footer
-      class="blog-footer"
-      itemprop="author"
-      itemscope
-      itemtype="https://schema.org/Organization"
-    >
-      <div class="author-block">
-        <div class="author-avatar"></div>
-        <div class="author-info">
-          <span itemprop="name" class="author-name">RepWar Editorial </span>
-          <span class="author-desc">Evidence-based fitness content for everyday athletes</span>
-        </div>
-      </div>
-    </footer> -->
   </article>
 </template>
 
 <script setup>
-import { computed } from 'vue'
-import { ref, onMounted } from 'vue'
+import { computed, ref } from 'vue'
+import { onMounted } from 'vue'
 import { useHead } from '@vueuse/head'
+
+// ── SSR guard — typeof window check keeps this safe during vite-ssg prerender ──
+const isClient = typeof window !== 'undefined'
 
 const adContainer = ref(null)
 
 onMounted(() => {
+  // onMounted never runs during SSG prerender — fully safe, no guard needed
   const loadBannerAd = () => {
-    if (!adContainer.value) {
-      console.error('Ad container not found')
-      return
-    }
-
+    if (!adContainer.value) return
     window.atOptions = {
       key: 'f7efffede6b20cfc598664a6620cba53',
       format: 'iframe',
@@ -608,17 +544,14 @@ onMounted(() => {
       width: 320,
       params: {},
     }
-
     const existingBanner = document.querySelector(
       'script[src="https://www.highperformanceformat.com/f7efffede6b20cfc598664a6620cba53/invoke.js"]',
     )
-
     if (!existingBanner) {
       const bannerScript = document.createElement('script')
       bannerScript.src =
         'https://www.highperformanceformat.com/f7efffede6b20cfc598664a6620cba53/invoke.js'
       bannerScript.async = true
-
       adContainer.value.appendChild(bannerScript)
     }
   }
@@ -626,53 +559,43 @@ onMounted(() => {
   const existingPopunder = document.querySelector(
     'script[src="https://pl29431608.effectivecpmnetwork.com/6c/23/14/6c23148144945977ff690d7df30a5f51.js"]',
   )
-
   if (existingPopunder) {
     loadBannerAd()
     return
   }
-
   const popunderScript = document.createElement('script')
   popunderScript.src =
     'https://pl29431608.effectivecpmnetwork.com/6c/23/14/6c23148144945977ff690d7df30a5f51.js'
   popunderScript.async = true
-
-  popunderScript.onload = () => {
-    console.log('Popunder loaded')
-    loadBannerAd()
-  }
-
-  popunderScript.onerror = () => {
-    console.error('Failed to load popunder script')
-  }
-
+  popunderScript.onload = loadBannerAd
+  popunderScript.onerror = () => console.error('Failed to load popunder script')
   document.body.appendChild(popunderScript)
 })
-// ── Meta & SEO ────────────────────────────────────────────────────────────────
+
+// ── Meta ──────────────────────────────────────────────────────────────────────
 const meta = {
   title: '50 Push-Ups a Day: 7 Proven Things That Happen to Your Body',
   description:
-    'Discover the 7 scientifically backed changes that happen when you do 30 push-ups every day — from heart health and bone density to blood sugar control and brain protection.',
+    'Discover the 7 scientifically backed changes that happen when you do 50 push-ups every day — from heart health and bone density to blood sugar control and brain protection.',
   keywords:
     '50 push-ups a day, push-up benefits, daily push-ups results, push-ups heart health, push-up muscle growth, push-ups every day, bodyweight exercise benefits',
   publishDate: '2025-06-01',
-  modifiedDate: new Date().toISOString().split('T')[0],
-  canonicalUrl: 'https://repwar.com/blog/30-pushups-a-day-benefits',
+  modifiedDate: '2025-06-01', // ← static string, not new Date() — keeps prerender deterministic
+  canonicalUrl: 'https://repwar.live/blog/50-pushups-a-day-benefits',
   ogImage: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80',
   author: 'RepWar Editorial',
-  readingTime: '9 min read',
   articleSection: 'Fitness Science',
 }
 
-const formattedDate = computed(() => {
-  return new Date(meta.publishDate).toLocaleDateString('en-US', {
+const formattedDate = computed(() =>
+  new Date(meta.publishDate).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
-  })
-})
+  }),
+)
 
-// ── Structured Data (JSON-LD) ────────────────────────────────────────────────
+// ── JSON-LD ───────────────────────────────────────────────────────────────────
 const structuredData = {
   '@context': 'https://schema.org',
   '@graph': [
@@ -681,34 +604,22 @@ const structuredData = {
       '@id': `${meta.canonicalUrl}#article`,
       headline: meta.title,
       description: meta.description,
-      image: {
-        '@type': 'ImageObject',
-        url: meta.ogImage,
-        width: 1200,
-        height: 630,
-      },
-      author: {
-        '@type': 'Organization',
-        name: meta.author,
-        url: 'https://repwar.com',
-      },
+      image: { '@type': 'ImageObject', url: meta.ogImage, width: 1200, height: 630 },
+      author: { '@type': 'Organization', name: 'RepWar', url: 'https://repwar.live' },
       publisher: {
         '@type': 'Organization',
         name: 'RepWar',
         logo: {
           '@type': 'ImageObject',
-          url: 'https://repwar.com/logo.png',
+          url: 'https://repwar.live/logo.png',
           width: 180,
           height: 60,
         },
-        url: 'https://repwar.com',
+        url: 'https://repwar.live',
       },
       datePublished: meta.publishDate,
       dateModified: meta.modifiedDate,
-      mainEntityOfPage: {
-        '@type': 'WebPage',
-        '@id': meta.canonicalUrl,
-      },
+      mainEntityOfPage: { '@type': 'WebPage', '@id': meta.canonicalUrl },
       articleSection: meta.articleSection,
       keywords: meta.keywords,
       wordCount: 1850,
@@ -718,8 +629,8 @@ const structuredData = {
     {
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://repwar.com' },
-        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://repwar.com/blog' },
+        { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://repwar.live' },
+        { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://repwar.live/blog' },
         { '@type': 'ListItem', position: 3, name: meta.title, item: meta.canonicalUrl },
       ],
     },
@@ -728,7 +639,7 @@ const structuredData = {
       mainEntity: [
         {
           '@type': 'Question',
-          name: 'Do 30 push-ups a day actually make a difference?',
+          name: 'Do 50 push-ups a day actually make a difference?',
           acceptedAnswer: {
             '@type': 'Answer',
             text: 'Yes — research and physiology both confirm it. Fifty daily push-ups stimulate muscle growth via mTOR signalling, improve cardiovascular efficiency, signal bone-building cells, assist blood sugar control via insulin-independent GLUT4 activation, and trigger BDNF release in the brain.',
@@ -747,7 +658,7 @@ const structuredData = {
           name: 'Is it okay to do push-ups every day without a rest day?',
           acceptedAnswer: {
             '@type': 'Answer',
-            text: 'For most people, 30 push-ups daily is a moderate enough stimulus that full recovery happens overnight. The mTOR muscle-building signal stays active for 24–48 hours, making daily stimulation beneficial.',
+            text: 'For most people, 50 push-ups daily is a moderate enough stimulus that full recovery happens overnight. The mTOR muscle-building signal stays active for 24–48 hours, making daily stimulation beneficial.',
           },
         },
       ],
@@ -755,63 +666,77 @@ const structuredData = {
   ],
 }
 
-// ── useHead (Nuxt 3 / Vue Router + @vueuse/head) ─────────────────────────────
-// If you use Nuxt 3, replace with useSeoMeta + useSchemaOrg
-if (typeof useHead !== 'undefined') {
-  useHead({
-    title: meta.title,
-    meta: [
-      { name: 'description', content: meta.description },
-      { name: 'keywords', content: meta.keywords },
-      {
-        name: 'robots',
-        content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
-      },
-      { name: 'author', content: meta.author },
-
-      // Open Graph
-      { property: 'og:type', content: 'article' },
-      { property: 'og:title', content: meta.title },
-      { property: 'og:description', content: meta.description },
-      { property: 'og:image', content: meta.ogImage },
-      { property: 'og:image:width', content: '1200' },
-      { property: 'og:image:height', content: '630' },
-      { property: 'og:url', content: meta.canonicalUrl },
-      { property: 'og:site_name', content: 'RepWar' },
-      { property: 'og:locale', content: 'en_US' },
-      { property: 'article:published_time', content: meta.publishDate },
-      { property: 'article:modified_time', content: meta.modifiedDate },
-      { property: 'article:author', content: 'https://repwar.com' },
-      { property: 'article:section', content: meta.articleSection },
-
-      // Twitter Card
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: meta.title },
-      { name: 'twitter:description', content: meta.description },
-      { name: 'twitter:image', content: meta.ogImage },
-      { name: 'twitter:site', content: '@repwar' },
-
-      // Mobile
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { name: 'theme-color', content: '#0f172a' },
-
-      // Geo (for GEO/AI ranking)
-      { name: 'geo.region', content: 'US' },
-      { name: 'geo.placename', content: 'United States' },
-    ],
-    link: [
-      { rel: 'canonical', href: meta.canonicalUrl },
-      { rel: 'preconnect', href: 'https://images.unsplash.com' },
-    ],
-    script: [
-      {
-        type: 'application/ld+json',
-        innerHTML: JSON.stringify(structuredData),
-      },
-    ],
-  })
-}
+// ── useHead — runs at SSG time, writes into static HTML ───────────────────────
+useHead({
+  title: meta.title,
+  meta: [
+    { name: 'description', content: meta.description },
+    { name: 'keywords', content: meta.keywords },
+    {
+      name: 'robots',
+      content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+    },
+    { name: 'author', content: meta.author },
+    // Open Graph
+    { property: 'og:type', content: 'article' },
+    { property: 'og:title', content: meta.title },
+    { property: 'og:description', content: meta.description },
+    { property: 'og:image', content: meta.ogImage },
+    { property: 'og:image:width', content: '1200' },
+    { property: 'og:image:height', content: '630' },
+    { property: 'og:url', content: meta.canonicalUrl },
+    { property: 'og:site_name', content: 'RepWar' },
+    { property: 'og:locale', content: 'en_US' },
+    { property: 'article:published_time', content: meta.publishDate },
+    { property: 'article:modified_time', content: meta.modifiedDate },
+    { property: 'article:section', content: meta.articleSection },
+    // Twitter Card
+    { name: 'twitter:card', content: 'summary_large_image' },
+    { name: 'twitter:title', content: meta.title },
+    { name: 'twitter:description', content: meta.description },
+    { name: 'twitter:image', content: meta.ogImage },
+    { name: 'twitter:site', content: '@repwar' },
+    // Mobile + theme
+    { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+    { name: 'theme-color', content: '#0f172a' },
+    // GEO
+    { name: 'geo.region', content: 'US' },
+    { name: 'geo.placename', content: 'United States' },
+  ],
+  link: [
+    { rel: 'canonical', href: meta.canonicalUrl },
+    { rel: 'preconnect', href: 'https://images.unsplash.com' },
+  ],
+  script: [
+    {
+      type: 'application/ld+json',
+      // key prevents duplicates if the component mounts twice (HMR / keep-alive)
+      key: 'blog-50-pushups-ld',
+      innerHTML: JSON.stringify(structuredData),
+    },
+  ],
+})
 </script>
+
 <style scoped>
 @import '@/assets/blogview.css';
+
+/* Footer nav links — replaces the inline style="color:blue" block */
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border, #1e2d45);
+}
+.footer-links a {
+  font-family: system-ui, sans-serif;
+  font-size: 0.85rem;
+  color: var(--accent, #f97316);
+  text-decoration: none;
+}
+.footer-links a:hover {
+  text-decoration: underline;
+}
 </style>
